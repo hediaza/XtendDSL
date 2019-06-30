@@ -1,0 +1,222 @@
+grammar org.xtext.example.compras.Compras with org.eclipse.xtext.common.Terminals
+
+generate compras "http://www.xtext.org/example/compras/Compras"
+
+/* ----------------------------------
+ * INICIALIZACIÓN
+ * ----------------------------------
+ */
+
+
+Solution: 
+	'SolutionName' ':' name=ID '{' 
+		'Domain' ':' domain=Domain? 
+		'Architecture' ':' architecture=Architecture? 
+		'Technology' ':' technology=Technology? 
+	'}'
+;
+
+FQN: 
+	ID ("." ID)*
+;
+
+
+/* ----------------------------------
+ * DOMINIO
+ * ----------------------------------
+ */
+ 
+Domain:
+	 '{' module+=Module+ '}'
+;
+
+Module:
+	 'Module' ':' name=ID ':' '{' 
+	 	'Entities' ':' '{' entity+=Entity* '}'
+	 	'Functionalities' ':' '{' functionality+=Functionality* '}'
+	 '}' 
+;
+
+Entity:	
+	name=ID ':' '{' 
+		entityField += EntityField* 
+	'}'
+;
+
+EntityField:
+    entityType=EntityType name=ID
+;
+
+EntityType:
+	(entity=[Entity|FQN] | commonFieldType=CommonFieldType)
+;
+
+enum CommonFieldType:
+	STRING='string' | 
+	INT='int' | 
+	BOOL='bool' | 
+	FLOAT='float' 
+;
+
+
+Functionality:
+	name=ID 'RelEntity' entity=[Entity|FQN] ':' '{' 
+		functionalityFieldType += FunctionalityFieldType* 
+	'}'
+;
+
+enum FunctionalityFieldType:
+	CREATE='CREATE' | 
+	VIEW_GRID='VIEW_GRID' | 
+	VIEW_DROPDOWN='VIEW_DROPDOWN' | 
+	EDIT='EDIT' | 
+	DELETE='DELETE' 
+;
+
+/* ----------------------------------
+ * ARQUITECTURA
+ * ----------------------------------
+ */
+
+Architecture:
+	'{' 
+		'Layers' ':' '{' 
+			'PresentationLayer' ':' presentationLayer=PresentationLayer
+			'BusinessLayer' ':' businessLayer=BusinessLayer
+			'DataAccessLayer' ':' dataAccessLayer=DataAccessLayer
+			'CommonLayer' ':' commonLayer=CommonLayer
+		'}' 
+		'Relations' ':' relations=Relations 
+	'}'
+;
+
+PresentationLayer:
+	name = ID ':' '{'
+		'ControllerSegmentLayer' ':' controllerSegmentLayer=ControllerSegmentLayer
+		'ViewSegmentLayer' ':' viewSegmentLayer=ViewSegmentLayer 
+		'ScriptSegmentLayer' ':' scriptegmentLayer=ScriptSegmentLayer 
+	'}'
+;
+
+ControllerSegmentLayer:
+	name = ID
+;
+
+ViewSegmentLayer:
+	name = ID
+;
+
+ScriptSegmentLayer:
+	name = ID
+;
+
+BusinessLayer:
+	name = ID
+;
+
+DataAccessLayer:
+	name = ID ':' '{'
+		'DbConnectorSegmentLayer' ':' dbConnectorSegmentLayer=DbConnectorSegmentLayer
+	'}'
+;
+
+DbConnectorSegmentLayer:
+	name = ID
+;
+
+CommonLayer:
+	name = ID
+;
+
+Relations:
+	'{'
+		sourceLayer1=[PresentationLayer] relationsType1=RelationsType targetLayer1=[BusinessLayer]
+		sourceLayer2=[BusinessLayer] relationsType2=RelationsType targetLayer2=[DataAccessLayer]
+		sourceLayer3=[DataAccessLayer] relationsType3=RelationsType targetLayer3=[CommonLayer]
+		sourceLayer4=[PresentationLayer] relationsType4=RelationsType targetLayer4=[CommonLayer]
+		sourceLayer5=[BusinessLayer] relationsType5=RelationsType targetLayer5=[CommonLayer]
+	'}'
+;
+
+
+enum RelationsType:
+	ALLOWED_TO_USE='AllowedToUse'
+;
+
+
+/* ----------------------------------
+ * TECNOLOGIA
+ * ----------------------------------
+ */
+ 
+Technology:
+ 	'{'
+		('AspNet' ':' '{' 
+			moduleTech+=ModuleTech*  
+		'}')? 
+		
+		('Database' ':' '{' 
+			(dbConnectorSegmentLayer=[DbConnectorSegmentLayer|FQN] ':' '{'
+				('DatabaseRDBMSType' ':' databaseRDBMSType=DatabaseRDBMSType)?
+				('ConnectionString' ':' connectionString=ConnectionString)?
+			'}')?
+		'}')?
+	'}'
+;
+
+ModuleTech:
+	 'Module' ':' name=[Module] ':' '{' 
+	 	presentationLayer=[PresentationLayer] ':' '{' 
+	 		(controllerSegmentLayer=[ControllerSegmentLayer|FQN] ':' '{' controllersRef+=ControllersRef* '}')? 
+	 		(viewSegmentLayer=[ViewSegmentLayer|FQN] ':' '{' viewsRef+=ViewsRef* '}')?
+	 		(scriptSegmentLayer=[ScriptSegmentLayer|FQN] ':' '{' scriptRef+=ScriptRef* '}')?
+	 	'}'
+	 	
+	 	businessLayer=[BusinessLayer] ':''{'
+	 		businessLayerRef+=BusinessLayerRef*
+	 	'}'
+	 	
+	 	dataAccessLayer=[DataAccessLayer] ':''{'
+	 		dataAccessLayerRef+=DataAccessLayerRef*
+	 	'}'
+	 	
+	 	commonLayer=[CommonLayer] ':''{'
+	 		commonLayerRef+=CommonLayerRef*
+	 	'}'
+	 '}' 
+;
+
+ControllersRef:
+	'Controller' ':' functionality=[Functionality|FQN]
+;
+
+ViewsRef:
+	'View' ':' functionality=[Functionality|FQN]
+;
+
+ScriptRef:
+	'Script' ':' functionality=[Functionality|FQN]
+;
+
+BusinessLayerRef:
+	'BLogic' ':' functionality=[Functionality|FQN]
+;
+
+DataAccessLayerRef:
+	'DataAccess' ':' functionality=[Functionality|FQN]
+;
+
+CommonLayerRef:
+	'DtoModel' ':' entity=[Entity|FQN]
+;
+
+
+ConnectionString:
+	STRING
+;
+
+enum DatabaseRDBMSType:
+	SQLSERVER='SQLSERVER' | 
+	ORACLE='ORACLE (future...)' | 
+	POSTGRES='POSTGRES (future...)' 
+;

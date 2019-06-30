@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.compras
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.compras
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.compras; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.xtext.example.compras.compras.util,
+ org.xtext.example.compras,
+ org.xtext.example.compras.scoping,
+ org.xtext.example.compras.compras,
+ org.xtext.example.compras.serializer,
+ org.xtext.example.compras.parser.antlr.internal,
+ org.xtext.example.compras.generator,
+ org.xtext.example.compras.services,
+ org.xtext.example.compras.compras.impl,
+ org.xtext.example.compras.parser.antlr,
+ org.xtext.example.compras.validation
+Import-Package: org.apache.log4j

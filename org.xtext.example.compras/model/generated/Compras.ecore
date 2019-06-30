@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="compras" nsURI="http://www.xtext.org/example/compras/Compras"
+    nsPrefix="compras">
+  <eClassifiers xsi:type="ecore:EClass" name="Solution">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domain" eType="#//Domain"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" eType="#//Architecture"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="technology" eType="#//Technology"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Domain">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" upperBound="-1"
+        eType="#//Module" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" upperBound="-1"
+        eType="#//Entity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" upperBound="-1"
+        eType="#//Functionality" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityField" upperBound="-1"
+        eType="#//EntityField" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityField">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityType" eType="#//EntityType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commonFieldType" eType="#//CommonFieldType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommonFieldType">
+    <eLiterals name="STRING" literal="string"/>
+    <eLiterals name="INT" value="1" literal="int"/>
+    <eLiterals name="BOOL" value="2" literal="bool"/>
+    <eLiterals name="FLOAT" value="3" literal="float"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Functionality">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionalityFieldType"
+        unique="false" upperBound="-1" eType="#//FunctionalityFieldType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FunctionalityFieldType">
+    <eLiterals name="CREATE" literal="CREATE"/>
+    <eLiterals name="VIEW_GRID" value="1" literal="VIEW_GRID"/>
+    <eLiterals name="VIEW_DROPDOWN" value="2" literal="VIEW_DROPDOWN"/>
+    <eLiterals name="EDIT" value="3" literal="EDIT"/>
+    <eLiterals name="DELETE" value="4" literal="DELETE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Architecture">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="presentationLayer" eType="#//PresentationLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="businessLayer" eType="#//BusinessLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAccessLayer" eType="#//DataAccessLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commonLayer" eType="#//CommonLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" eType="#//Relations"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controllerSegmentLayer"
+        eType="#//ControllerSegmentLayer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewSegmentLayer" eType="#//ViewSegmentLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scriptegmentLayer" eType="#//ScriptSegmentLayer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControllerSegmentLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewSegmentLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptSegmentLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAccessLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConnectorSegmentLayer"
+        eType="#//DbConnectorSegmentLayer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DbConnectorSegmentLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommonLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceLayer1" eType="#//PresentationLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationsType1" eType="#//RelationsType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLayer1" eType="#//BusinessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceLayer2" eType="#//BusinessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationsType2" eType="#//RelationsType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLayer2" eType="#//DataAccessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceLayer3" eType="#//DataAccessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationsType3" eType="#//RelationsType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLayer3" eType="#//CommonLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceLayer4" eType="#//PresentationLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationsType4" eType="#//RelationsType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLayer4" eType="#//CommonLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceLayer5" eType="#//BusinessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationsType5" eType="#//RelationsType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLayer5" eType="#//CommonLayer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationsType">
+    <eLiterals name="ALLOWED_TO_USE" literal="AllowedToUse"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Technology">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moduleTech" upperBound="-1"
+        eType="#//ModuleTech" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConnectorSegmentLayer"
+        eType="#//DbConnectorSegmentLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="databaseRDBMSType" eType="#//DatabaseRDBMSType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleTech">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Module"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="presentationLayer" eType="#//PresentationLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controllerSegmentLayer"
+        eType="#//ControllerSegmentLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controllersRef" upperBound="-1"
+        eType="#//ControllersRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewSegmentLayer" eType="#//ViewSegmentLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewsRef" upperBound="-1"
+        eType="#//ViewsRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scriptSegmentLayer" eType="#//ScriptSegmentLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scriptRef" upperBound="-1"
+        eType="#//ScriptRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="businessLayer" eType="#//BusinessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="businessLayerRef" upperBound="-1"
+        eType="#//BusinessLayerRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAccessLayer" eType="#//DataAccessLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAccessLayerRef" upperBound="-1"
+        eType="#//DataAccessLayerRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commonLayer" eType="#//CommonLayer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commonLayerRef" upperBound="-1"
+        eType="#//CommonLayerRef" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControllersRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" eType="#//Functionality"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewsRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" eType="#//Functionality"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" eType="#//Functionality"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" eType="#//Functionality"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAccessLayerRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionality" eType="#//Functionality"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommonLayerRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatabaseRDBMSType">
+    <eLiterals name="SQLSERVER" literal="SQLSERVER"/>
+    <eLiterals name="ORACLE" value="1" literal="ORACLE (future...)"/>
+    <eLiterals name="POSTGRES" value="2" literal="POSTGRES (future...)"/>
+  </eClassifiers>
+</ecore:EPackage>
