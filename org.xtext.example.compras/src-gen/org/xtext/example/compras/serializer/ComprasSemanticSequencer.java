@@ -28,6 +28,8 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.ModuleTech;
@@ -93,6 +95,12 @@ public class ComprasSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case ComprasPackage.ENTITY_FIELD:
 				sequence_EntityField(context, (EntityField) semanticObject); 
+				return; 
+			case ComprasPackage.ENTITY_FIELD_LABEL:
+				sequence_EntityFieldLabel(context, (EntityFieldLabel) semanticObject); 
+				return; 
+			case ComprasPackage.ENTITY_FIELD_REQUIRED:
+				sequence_EntityFieldRequired(context, (EntityFieldRequired) semanticObject); 
 				return; 
 			case ComprasPackage.ENTITY_TYPE:
 				sequence_EntityType(context, (EntityType) semanticObject); 
@@ -344,22 +352,49 @@ public class ComprasSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     EntityFieldLabel returns EntityFieldLabel
+	 *
+	 * Constraint:
+	 *     name=STRING
+	 */
+	protected void sequence_EntityFieldLabel(ISerializationContext context, EntityFieldLabel semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_LABEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_LABEL__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntityFieldLabelAccess().getNameSTRINGTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EntityFieldRequired returns EntityFieldRequired
+	 *
+	 * Constraint:
+	 *     name='required'
+	 */
+	protected void sequence_EntityFieldRequired(ISerializationContext context, EntityFieldRequired semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_REQUIRED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_REQUIRED__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntityFieldRequiredAccess().getNameRequiredKeyword_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EntityField returns EntityField
 	 *
 	 * Constraint:
-	 *     (entityType=EntityType name=ID)
+	 *     (entityFieldRequired=EntityFieldRequired? entityFieldLabel=EntityFieldLabel? entityType=EntityType name=ID)
 	 */
 	protected void sequence_EntityField(ISerializationContext context, EntityField semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__ENTITY_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__ENTITY_TYPE));
-			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEntityFieldAccess().getEntityTypeEntityTypeParserRuleCall_0_0(), semanticObject.getEntityType());
-		feeder.accept(grammarAccess.getEntityFieldAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

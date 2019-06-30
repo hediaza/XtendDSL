@@ -235,13 +235,31 @@ public interface ComprasPackage extends EPackage
   int ENTITY_FIELD = 4;
 
   /**
+   * The feature id for the '<em><b>Entity Field Required</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD__ENTITY_FIELD_REQUIRED = 0;
+
+  /**
+   * The feature id for the '<em><b>Entity Field Label</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD__ENTITY_FIELD_LABEL = 1;
+
+  /**
    * The feature id for the '<em><b>Entity Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_FIELD__ENTITY_TYPE = 0;
+  int ENTITY_FIELD__ENTITY_TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -250,7 +268,7 @@ public interface ComprasPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FIELD__NAME = 1;
+  int ENTITY_FIELD__NAME = 3;
 
   /**
    * The number of structural features of the '<em>Entity Field</em>' class.
@@ -259,7 +277,63 @@ public interface ComprasPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FIELD_FEATURE_COUNT = 2;
+  int ENTITY_FIELD_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.compras.compras.impl.EntityFieldLabelImpl <em>Entity Field Label</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.compras.compras.impl.EntityFieldLabelImpl
+   * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getEntityFieldLabel()
+   * @generated
+   */
+  int ENTITY_FIELD_LABEL = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD_LABEL__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Entity Field Label</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD_LABEL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.compras.compras.impl.EntityFieldRequiredImpl <em>Entity Field Required</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.compras.compras.impl.EntityFieldRequiredImpl
+   * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getEntityFieldRequired()
+   * @generated
+   */
+  int ENTITY_FIELD_REQUIRED = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD_REQUIRED__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Entity Field Required</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FIELD_REQUIRED_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.compras.compras.impl.EntityTypeImpl <em>Entity Type</em>}' class.
@@ -269,7 +343,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getEntityType()
    * @generated
    */
-  int ENTITY_TYPE = 5;
+  int ENTITY_TYPE = 7;
 
   /**
    * The feature id for the '<em><b>Entity</b></em>' reference.
@@ -306,7 +380,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getFunctionality()
    * @generated
    */
-  int FUNCTIONALITY = 6;
+  int FUNCTIONALITY = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -352,7 +426,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getArchitecture()
    * @generated
    */
-  int ARCHITECTURE = 7;
+  int ARCHITECTURE = 9;
 
   /**
    * The feature id for the '<em><b>Presentation Layer</b></em>' containment reference.
@@ -416,7 +490,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getPresentationLayer()
    * @generated
    */
-  int PRESENTATION_LAYER = 8;
+  int PRESENTATION_LAYER = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -471,7 +545,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getControllerSegmentLayer()
    * @generated
    */
-  int CONTROLLER_SEGMENT_LAYER = 9;
+  int CONTROLLER_SEGMENT_LAYER = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -499,7 +573,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getViewSegmentLayer()
    * @generated
    */
-  int VIEW_SEGMENT_LAYER = 10;
+  int VIEW_SEGMENT_LAYER = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -527,7 +601,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getScriptSegmentLayer()
    * @generated
    */
-  int SCRIPT_SEGMENT_LAYER = 11;
+  int SCRIPT_SEGMENT_LAYER = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -555,7 +629,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getBusinessLayer()
    * @generated
    */
-  int BUSINESS_LAYER = 12;
+  int BUSINESS_LAYER = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -583,7 +657,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getDataAccessLayer()
    * @generated
    */
-  int DATA_ACCESS_LAYER = 13;
+  int DATA_ACCESS_LAYER = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -620,7 +694,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getDbConnectorSegmentLayer()
    * @generated
    */
-  int DB_CONNECTOR_SEGMENT_LAYER = 14;
+  int DB_CONNECTOR_SEGMENT_LAYER = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -648,7 +722,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getCommonLayer()
    * @generated
    */
-  int COMMON_LAYER = 15;
+  int COMMON_LAYER = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -676,7 +750,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getRelations()
    * @generated
    */
-  int RELATIONS = 16;
+  int RELATIONS = 18;
 
   /**
    * The feature id for the '<em><b>Source Layer1</b></em>' reference.
@@ -830,7 +904,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getTechnology()
    * @generated
    */
-  int TECHNOLOGY = 17;
+  int TECHNOLOGY = 19;
 
   /**
    * The feature id for the '<em><b>Module Tech</b></em>' containment reference list.
@@ -885,7 +959,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getModuleTech()
    * @generated
    */
-  int MODULE_TECH = 18;
+  int MODULE_TECH = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' reference.
@@ -1030,7 +1104,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getControllersRef()
    * @generated
    */
-  int CONTROLLERS_REF = 19;
+  int CONTROLLERS_REF = 21;
 
   /**
    * The feature id for the '<em><b>Functionality</b></em>' reference.
@@ -1058,7 +1132,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getViewsRef()
    * @generated
    */
-  int VIEWS_REF = 20;
+  int VIEWS_REF = 22;
 
   /**
    * The feature id for the '<em><b>Functionality</b></em>' reference.
@@ -1086,7 +1160,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getScriptRef()
    * @generated
    */
-  int SCRIPT_REF = 21;
+  int SCRIPT_REF = 23;
 
   /**
    * The feature id for the '<em><b>Functionality</b></em>' reference.
@@ -1114,7 +1188,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getBusinessLayerRef()
    * @generated
    */
-  int BUSINESS_LAYER_REF = 22;
+  int BUSINESS_LAYER_REF = 24;
 
   /**
    * The feature id for the '<em><b>Functionality</b></em>' reference.
@@ -1142,7 +1216,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getDataAccessLayerRef()
    * @generated
    */
-  int DATA_ACCESS_LAYER_REF = 23;
+  int DATA_ACCESS_LAYER_REF = 25;
 
   /**
    * The feature id for the '<em><b>Functionality</b></em>' reference.
@@ -1170,7 +1244,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getCommonLayerRef()
    * @generated
    */
-  int COMMON_LAYER_REF = 24;
+  int COMMON_LAYER_REF = 26;
 
   /**
    * The feature id for the '<em><b>Entity</b></em>' reference.
@@ -1198,7 +1272,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getCommonFieldType()
    * @generated
    */
-  int COMMON_FIELD_TYPE = 25;
+  int COMMON_FIELD_TYPE = 27;
 
   /**
    * The meta object id for the '{@link org.xtext.example.compras.compras.FunctionalityFieldType <em>Functionality Field Type</em>}' enum.
@@ -1208,7 +1282,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getFunctionalityFieldType()
    * @generated
    */
-  int FUNCTIONALITY_FIELD_TYPE = 26;
+  int FUNCTIONALITY_FIELD_TYPE = 28;
 
   /**
    * The meta object id for the '{@link org.xtext.example.compras.compras.RelationsType <em>Relations Type</em>}' enum.
@@ -1218,7 +1292,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getRelationsType()
    * @generated
    */
-  int RELATIONS_TYPE = 27;
+  int RELATIONS_TYPE = 29;
 
   /**
    * The meta object id for the '{@link org.xtext.example.compras.compras.DatabaseRDBMSType <em>Database RDBMS Type</em>}' enum.
@@ -1228,7 +1302,7 @@ public interface ComprasPackage extends EPackage
    * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getDatabaseRDBMSType()
    * @generated
    */
-  int DATABASE_RDBMS_TYPE = 28;
+  int DATABASE_RDBMS_TYPE = 30;
 
 
   /**
@@ -1392,6 +1466,28 @@ public interface ComprasPackage extends EPackage
   EClass getEntityField();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.compras.compras.EntityField#getEntityFieldRequired <em>Entity Field Required</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Entity Field Required</em>'.
+   * @see org.xtext.example.compras.compras.EntityField#getEntityFieldRequired()
+   * @see #getEntityField()
+   * @generated
+   */
+  EReference getEntityField_EntityFieldRequired();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.compras.compras.EntityField#getEntityFieldLabel <em>Entity Field Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Entity Field Label</em>'.
+   * @see org.xtext.example.compras.compras.EntityField#getEntityFieldLabel()
+   * @see #getEntityField()
+   * @generated
+   */
+  EReference getEntityField_EntityFieldLabel();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.compras.compras.EntityField#getEntityType <em>Entity Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1412,6 +1508,48 @@ public interface ComprasPackage extends EPackage
    * @generated
    */
   EAttribute getEntityField_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.compras.compras.EntityFieldLabel <em>Entity Field Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity Field Label</em>'.
+   * @see org.xtext.example.compras.compras.EntityFieldLabel
+   * @generated
+   */
+  EClass getEntityFieldLabel();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.compras.compras.EntityFieldLabel#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.compras.compras.EntityFieldLabel#getName()
+   * @see #getEntityFieldLabel()
+   * @generated
+   */
+  EAttribute getEntityFieldLabel_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.compras.compras.EntityFieldRequired <em>Entity Field Required</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity Field Required</em>'.
+   * @see org.xtext.example.compras.compras.EntityFieldRequired
+   * @generated
+   */
+  EClass getEntityFieldRequired();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.compras.compras.EntityFieldRequired#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.compras.compras.EntityFieldRequired#getName()
+   * @see #getEntityFieldRequired()
+   * @generated
+   */
+  EAttribute getEntityFieldRequired_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.compras.compras.EntityType <em>Entity Type</em>}'.
@@ -2478,6 +2616,22 @@ public interface ComprasPackage extends EPackage
     EClass ENTITY_FIELD = eINSTANCE.getEntityField();
 
     /**
+     * The meta object literal for the '<em><b>Entity Field Required</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY_FIELD__ENTITY_FIELD_REQUIRED = eINSTANCE.getEntityField_EntityFieldRequired();
+
+    /**
+     * The meta object literal for the '<em><b>Entity Field Label</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY_FIELD__ENTITY_FIELD_LABEL = eINSTANCE.getEntityField_EntityFieldLabel();
+
+    /**
      * The meta object literal for the '<em><b>Entity Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2492,6 +2646,42 @@ public interface ComprasPackage extends EPackage
      * @generated
      */
     EAttribute ENTITY_FIELD__NAME = eINSTANCE.getEntityField_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.compras.compras.impl.EntityFieldLabelImpl <em>Entity Field Label</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.compras.compras.impl.EntityFieldLabelImpl
+     * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getEntityFieldLabel()
+     * @generated
+     */
+    EClass ENTITY_FIELD_LABEL = eINSTANCE.getEntityFieldLabel();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_FIELD_LABEL__NAME = eINSTANCE.getEntityFieldLabel_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.compras.compras.impl.EntityFieldRequiredImpl <em>Entity Field Required</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.compras.compras.impl.EntityFieldRequiredImpl
+     * @see org.xtext.example.compras.compras.impl.ComprasPackageImpl#getEntityFieldRequired()
+     * @generated
+     */
+    EClass ENTITY_FIELD_REQUIRED = eINSTANCE.getEntityFieldRequired();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_FIELD_REQUIRED__NAME = eINSTANCE.getEntityFieldRequired_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.compras.compras.impl.EntityTypeImpl <em>Entity Type</em>}' class.

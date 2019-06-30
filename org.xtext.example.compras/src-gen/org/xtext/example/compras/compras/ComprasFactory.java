@@ -69,6 +69,24 @@ public interface ComprasFactory extends EFactory
   EntityField createEntityField();
 
   /**
+   * Returns a new object of class '<em>Entity Field Label</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity Field Label</em>'.
+   * @generated
+   */
+  EntityFieldLabel createEntityFieldLabel();
+
+  /**
+   * Returns a new object of class '<em>Entity Field Required</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity Field Required</em>'.
+   * @generated
+   */
+  EntityFieldRequired createEntityFieldRequired();
+
+  /**
    * Returns a new object of class '<em>Entity Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

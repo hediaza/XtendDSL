@@ -22,6 +22,8 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.ModuleTech;
@@ -129,6 +131,20 @@ public class ComprasSwitch<T> extends Switch<T>
       {
         EntityField entityField = (EntityField)theEObject;
         T result = caseEntityField(entityField);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.ENTITY_FIELD_LABEL:
+      {
+        EntityFieldLabel entityFieldLabel = (EntityFieldLabel)theEObject;
+        T result = caseEntityFieldLabel(entityFieldLabel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.ENTITY_FIELD_REQUIRED:
+      {
+        EntityFieldRequired entityFieldRequired = (EntityFieldRequired)theEObject;
+        T result = caseEntityFieldRequired(entityFieldRequired);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -352,6 +368,38 @@ public class ComprasSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEntityField(EntityField object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity Field Label</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity Field Label</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntityFieldLabel(EntityFieldLabel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity Field Required</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity Field Required</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntityFieldRequired(EntityFieldRequired object)
   {
     return null;
   }

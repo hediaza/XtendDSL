@@ -29,6 +29,8 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.FunctionalityFieldType;
@@ -100,6 +102,8 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
       case ComprasPackage.MODULE: return createModule();
       case ComprasPackage.ENTITY: return createEntity();
       case ComprasPackage.ENTITY_FIELD: return createEntityField();
+      case ComprasPackage.ENTITY_FIELD_LABEL: return createEntityFieldLabel();
+      case ComprasPackage.ENTITY_FIELD_REQUIRED: return createEntityFieldRequired();
       case ComprasPackage.ENTITY_TYPE: return createEntityType();
       case ComprasPackage.FUNCTIONALITY: return createFunctionality();
       case ComprasPackage.ARCHITECTURE: return createArchitecture();
@@ -229,6 +233,30 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
   {
     EntityFieldImpl entityField = new EntityFieldImpl();
     return entityField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EntityFieldLabel createEntityFieldLabel()
+  {
+    EntityFieldLabelImpl entityFieldLabel = new EntityFieldLabelImpl();
+    return entityFieldLabel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EntityFieldRequired createEntityFieldRequired()
+  {
+    EntityFieldRequiredImpl entityFieldRequired = new EntityFieldRequiredImpl();
+    return entityFieldRequired;
   }
 
   /**

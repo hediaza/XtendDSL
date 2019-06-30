@@ -42,6 +42,8 @@ public class ComprasParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModuleAccess().getGroup(), "rule__Module__Group__0");
 			builder.put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 			builder.put(grammarAccess.getEntityFieldAccess().getGroup(), "rule__EntityField__Group__0");
+			builder.put(grammarAccess.getEntityFieldLabelAccess().getGroup(), "rule__EntityFieldLabel__Group__0");
+			builder.put(grammarAccess.getEntityFieldRequiredAccess().getGroup(), "rule__EntityFieldRequired__Group__0");
 			builder.put(grammarAccess.getFunctionalityAccess().getGroup(), "rule__Functionality__Group__0");
 			builder.put(grammarAccess.getArchitectureAccess().getGroup(), "rule__Architecture__Group__0");
 			builder.put(grammarAccess.getPresentationLayerAccess().getGroup(), "rule__PresentationLayer__Group__0");
@@ -73,8 +75,12 @@ public class ComprasParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModuleAccess().getFunctionalityAssignment_13(), "rule__Module__FunctionalityAssignment_13");
 			builder.put(grammarAccess.getEntityAccess().getNameAssignment_0(), "rule__Entity__NameAssignment_0");
 			builder.put(grammarAccess.getEntityAccess().getEntityFieldAssignment_3(), "rule__Entity__EntityFieldAssignment_3");
-			builder.put(grammarAccess.getEntityFieldAccess().getEntityTypeAssignment_0(), "rule__EntityField__EntityTypeAssignment_0");
-			builder.put(grammarAccess.getEntityFieldAccess().getNameAssignment_1(), "rule__EntityField__NameAssignment_1");
+			builder.put(grammarAccess.getEntityFieldAccess().getEntityFieldRequiredAssignment_0(), "rule__EntityField__EntityFieldRequiredAssignment_0");
+			builder.put(grammarAccess.getEntityFieldAccess().getEntityFieldLabelAssignment_1(), "rule__EntityField__EntityFieldLabelAssignment_1");
+			builder.put(grammarAccess.getEntityFieldAccess().getEntityTypeAssignment_2(), "rule__EntityField__EntityTypeAssignment_2");
+			builder.put(grammarAccess.getEntityFieldAccess().getNameAssignment_3(), "rule__EntityField__NameAssignment_3");
+			builder.put(grammarAccess.getEntityFieldLabelAccess().getNameAssignment_3(), "rule__EntityFieldLabel__NameAssignment_3");
+			builder.put(grammarAccess.getEntityFieldRequiredAccess().getNameAssignment_1(), "rule__EntityFieldRequired__NameAssignment_1");
 			builder.put(grammarAccess.getEntityTypeAccess().getEntityAssignment_0(), "rule__EntityType__EntityAssignment_0");
 			builder.put(grammarAccess.getEntityTypeAccess().getCommonFieldTypeAssignment_1(), "rule__EntityType__CommonFieldTypeAssignment_1");
 			builder.put(grammarAccess.getFunctionalityAccess().getNameAssignment_0(), "rule__Functionality__NameAssignment_0");

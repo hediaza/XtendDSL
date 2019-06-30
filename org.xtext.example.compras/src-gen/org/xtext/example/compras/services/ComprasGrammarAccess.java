@@ -309,29 +309,109 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityFieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityField");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cEntityTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cEntityTypeEntityTypeParserRuleCall_0_0 = (RuleCall)cEntityTypeAssignment_0.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cEntityFieldRequiredAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0 = (RuleCall)cEntityFieldRequiredAssignment_0.eContents().get(0);
+		private final Assignment cEntityFieldLabelAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cEntityFieldLabelEntityFieldLabelParserRuleCall_1_0 = (RuleCall)cEntityFieldLabelAssignment_1.eContents().get(0);
+		private final Assignment cEntityTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEntityTypeEntityTypeParserRuleCall_2_0 = (RuleCall)cEntityTypeAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		
 		//EntityField:
+		//	entityFieldRequired=EntityFieldRequired?
+		//	entityFieldLabel=EntityFieldLabel?
 		//	entityType=EntityType name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//entityType=EntityType name=ID
+		//entityFieldRequired=EntityFieldRequired? entityFieldLabel=EntityFieldLabel? entityType=EntityType name=ID
 		public Group getGroup() { return cGroup; }
 		
+		//entityFieldRequired=EntityFieldRequired?
+		public Assignment getEntityFieldRequiredAssignment_0() { return cEntityFieldRequiredAssignment_0; }
+		
+		//EntityFieldRequired
+		public RuleCall getEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0() { return cEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0; }
+		
+		//entityFieldLabel=EntityFieldLabel?
+		public Assignment getEntityFieldLabelAssignment_1() { return cEntityFieldLabelAssignment_1; }
+		
+		//EntityFieldLabel
+		public RuleCall getEntityFieldLabelEntityFieldLabelParserRuleCall_1_0() { return cEntityFieldLabelEntityFieldLabelParserRuleCall_1_0; }
+		
 		//entityType=EntityType
-		public Assignment getEntityTypeAssignment_0() { return cEntityTypeAssignment_0; }
+		public Assignment getEntityTypeAssignment_2() { return cEntityTypeAssignment_2; }
 		
 		//EntityType
-		public RuleCall getEntityTypeEntityTypeParserRuleCall_0_0() { return cEntityTypeEntityTypeParserRuleCall_0_0; }
+		public RuleCall getEntityTypeEntityTypeParserRuleCall_2_0() { return cEntityTypeEntityTypeParserRuleCall_2_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+	}
+	public class EntityFieldLabelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityFieldLabel");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLabelKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//EntityFieldLabel:
+		//	'[' 'label' ':' name=STRING ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' 'label' ':' name=STRING ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//'label'
+		public Keyword getLabelKeyword_1() { return cLabelKeyword_1; }
+		
+		//':'
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
+	}
+	public class EntityFieldRequiredElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityFieldRequired");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cNameRequiredKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//EntityFieldRequired:
+		//	'[' name='required' ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' name='required' ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//name='required'
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//'required'
+		public Keyword getNameRequiredKeyword_1_0() { return cNameRequiredKeyword_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 	public class EntityTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityType");
@@ -1756,6 +1836,8 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	private final ModuleElements pModule;
 	private final EntityElements pEntity;
 	private final EntityFieldElements pEntityField;
+	private final EntityFieldLabelElements pEntityFieldLabel;
+	private final EntityFieldRequiredElements pEntityFieldRequired;
 	private final EntityTypeElements pEntityType;
 	private final CommonFieldTypeElements eCommonFieldType;
 	private final FunctionalityElements pFunctionality;
@@ -1797,6 +1879,8 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModule = new ModuleElements();
 		this.pEntity = new EntityElements();
 		this.pEntityField = new EntityFieldElements();
+		this.pEntityFieldLabel = new EntityFieldLabelElements();
+		this.pEntityFieldRequired = new EntityFieldRequiredElements();
 		this.pEntityType = new EntityTypeElements();
 		this.eCommonFieldType = new CommonFieldTypeElements();
 		this.pFunctionality = new FunctionalityElements();
@@ -1917,6 +2001,8 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityField:
+	//	entityFieldRequired=EntityFieldRequired?
+	//	entityFieldLabel=EntityFieldLabel?
 	//	entityType=EntityType name=ID;
 	public EntityFieldElements getEntityFieldAccess() {
 		return pEntityField;
@@ -1924,6 +2010,26 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEntityFieldRule() {
 		return getEntityFieldAccess().getRule();
+	}
+	
+	//EntityFieldLabel:
+	//	'[' 'label' ':' name=STRING ']';
+	public EntityFieldLabelElements getEntityFieldLabelAccess() {
+		return pEntityFieldLabel;
+	}
+	
+	public ParserRule getEntityFieldLabelRule() {
+		return getEntityFieldLabelAccess().getRule();
+	}
+	
+	//EntityFieldRequired:
+	//	'[' name='required' ']';
+	public EntityFieldRequiredElements getEntityFieldRequiredAccess() {
+		return pEntityFieldRequired;
+	}
+	
+	public ParserRule getEntityFieldRequiredRule() {
+		return getEntityFieldRequiredAccess().getRule();
 	}
 	
 	//EntityType:

@@ -495,9 +495,47 @@ ruleEntityField returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEntityFieldAccess().getEntityTypeEntityTypeParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getEntityFieldAccess().getEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0());
 				}
-				lv_entityType_0_0=ruleEntityType
+				lv_entityFieldRequired_0_0=ruleEntityFieldRequired
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEntityFieldRule());
+					}
+					set(
+						$current,
+						"entityFieldRequired",
+						lv_entityFieldRequired_0_0,
+						"org.xtext.example.compras.Compras.EntityFieldRequired");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEntityFieldAccess().getEntityFieldLabelEntityFieldLabelParserRuleCall_1_0());
+				}
+				lv_entityFieldLabel_1_0=ruleEntityFieldLabel
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEntityFieldRule());
+					}
+					set(
+						$current,
+						"entityFieldLabel",
+						lv_entityFieldLabel_1_0,
+						"org.xtext.example.compras.Compras.EntityFieldLabel");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEntityFieldAccess().getEntityTypeEntityTypeParserRuleCall_2_0());
+				}
+				lv_entityType_2_0=ruleEntityType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getEntityFieldRule());
@@ -505,7 +543,7 @@ ruleEntityField returns [EObject current=null]
 					set(
 						$current,
 						"entityType",
-						lv_entityType_0_0,
+						lv_entityType_2_0,
 						"org.xtext.example.compras.Compras.EntityType");
 					afterParserOrEnumRuleCall();
 				}
@@ -513,9 +551,9 @@ ruleEntityField returns [EObject current=null]
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getEntityFieldAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getEntityFieldAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -524,11 +562,105 @@ ruleEntityField returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleEntityFieldLabel
+entryRuleEntityFieldLabel returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEntityFieldLabelRule()); }
+	iv_ruleEntityFieldLabel=ruleEntityFieldLabel
+	{ $current=$iv_ruleEntityFieldLabel.current; }
+	EOF;
+
+// Rule EntityFieldLabel
+ruleEntityFieldLabel returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='['
+		{
+			newLeafNode(otherlv_0, grammarAccess.getEntityFieldLabelAccess().getLeftSquareBracketKeyword_0());
+		}
+		otherlv_1='label'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getEntityFieldLabelAccess().getLabelKeyword_1());
+		}
+		otherlv_2=':'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEntityFieldLabelAccess().getColonKeyword_2());
+		}
+		(
+			(
+				lv_name_3_0=RULE_STRING
+				{
+					newLeafNode(lv_name_3_0, grammarAccess.getEntityFieldLabelAccess().getNameSTRINGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEntityFieldLabelRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_4=']'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getEntityFieldLabelAccess().getRightSquareBracketKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleEntityFieldRequired
+entryRuleEntityFieldRequired returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEntityFieldRequiredRule()); }
+	iv_ruleEntityFieldRequired=ruleEntityFieldRequired
+	{ $current=$iv_ruleEntityFieldRequired.current; }
+	EOF;
+
+// Rule EntityFieldRequired
+ruleEntityFieldRequired returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='['
+		{
+			newLeafNode(otherlv_0, grammarAccess.getEntityFieldRequiredAccess().getLeftSquareBracketKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0='required'
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getEntityFieldRequiredAccess().getNameRequiredKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEntityFieldRequiredRule());
+					}
+					setWithLastConsumed($current, "name", lv_name_1_0, "required");
+				}
+			)
+		)
+		otherlv_2=']'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEntityFieldRequiredAccess().getRightSquareBracketKeyword_2());
+		}
 	)
 ;
 

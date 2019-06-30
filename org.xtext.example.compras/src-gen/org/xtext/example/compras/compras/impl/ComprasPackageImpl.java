@@ -28,6 +28,8 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.FunctionalityFieldType;
@@ -84,6 +86,20 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   private EClass entityFieldEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityFieldLabelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityFieldRequiredEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -487,7 +503,7 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
-  public EReference getEntityField_EntityType()
+  public EReference getEntityField_EntityFieldRequired()
   {
     return (EReference)entityFieldEClass.getEStructuralFeatures().get(0);
   }
@@ -498,9 +514,75 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
+  public EReference getEntityField_EntityFieldLabel()
+  {
+    return (EReference)entityFieldEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEntityField_EntityType()
+  {
+    return (EReference)entityFieldEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getEntityField_Name()
   {
-    return (EAttribute)entityFieldEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)entityFieldEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntityFieldLabel()
+  {
+    return entityFieldLabelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityFieldLabel_Name()
+  {
+    return (EAttribute)entityFieldLabelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntityFieldRequired()
+  {
+    return entityFieldRequiredEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityFieldRequired_Name()
+  {
+    return (EAttribute)entityFieldRequiredEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1488,8 +1570,16 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     createEReference(entityEClass, ENTITY__ENTITY_FIELD);
 
     entityFieldEClass = createEClass(ENTITY_FIELD);
+    createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_FIELD_REQUIRED);
+    createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_FIELD_LABEL);
     createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_TYPE);
     createEAttribute(entityFieldEClass, ENTITY_FIELD__NAME);
+
+    entityFieldLabelEClass = createEClass(ENTITY_FIELD_LABEL);
+    createEAttribute(entityFieldLabelEClass, ENTITY_FIELD_LABEL__NAME);
+
+    entityFieldRequiredEClass = createEClass(ENTITY_FIELD_REQUIRED);
+    createEAttribute(entityFieldRequiredEClass, ENTITY_FIELD_REQUIRED__NAME);
 
     entityTypeEClass = createEClass(ENTITY_TYPE);
     createEReference(entityTypeEClass, ENTITY_TYPE__ENTITY);
@@ -1649,8 +1739,16 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     initEReference(getEntity_EntityField(), this.getEntityField(), null, "entityField", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityFieldEClass, EntityField.class, "EntityField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntityField_EntityFieldRequired(), this.getEntityFieldRequired(), null, "entityFieldRequired", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityField_EntityFieldLabel(), this.getEntityFieldLabel(), null, "entityFieldLabel", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityField_EntityType(), this.getEntityType(), null, "entityType", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityField_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityFieldLabelEClass, EntityFieldLabel.class, "EntityFieldLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityFieldLabel_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityFieldLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityFieldRequiredEClass, EntityFieldRequired.class, "EntityFieldRequired", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityFieldRequired_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityFieldRequired.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityTypeEClass, EntityType.class, "EntityType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEntityType_Entity(), this.getEntity(), null, "entity", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -45,7 +45,21 @@ class ComprasValidator extends AbstractComprasValidator {
 				  ComprasPackage.Literals.ENTITY_FIELD__NAME
 			)
 		}
+	}  
+	
+	
+	@Check
+	def void checkEntityNameIsUnique(Entity entity) {
+		var module = entity.eContainer as Module
+		var countField = module.entity.filter[it.name == entity.name].size
+		
+		if (countField > 1) {
+			error("Los nombres de las entidades deben ser unicos", 
+				  ComprasPackage.Literals.ENTITY__NAME
+			)
+		}
 	}
+	
 	
 	@Check
 	def void checkEntityHasFieldNameId(Entity entity) {		

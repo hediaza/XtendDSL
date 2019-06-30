@@ -44,7 +44,17 @@ Entity:
 ;
 
 EntityField:
+	entityFieldRequired = EntityFieldRequired? 
+	entityFieldLabel = EntityFieldLabel?
     entityType=EntityType name=ID
+;
+
+EntityFieldLabel:
+    '[' 'label' ':' name=STRING ']'
+;
+
+EntityFieldRequired:
+    '[' name='required' ']'
 ;
 
 EntityType:

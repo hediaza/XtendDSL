@@ -41,17 +41,19 @@ class CommonLayerAsset {
 	}
 	
 	def compile(EntityField ef) {
-		var String type
+		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
+				   else ef.entityType.entity.dtoPathName
 		
-		if (ef.entityType.entity === null) {
-			type = ef.entityType.commonFieldType.toString
-		} else {
-			type = ef.entityType.entity.dtoPathName
-		}
+		var required = if (ef.entityFieldRequired === null) "" else "[Required]" 		
+		
+		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
 		
 		return
 		'''
+		«required»
+		«label»
 		public «type» «ef.name» { get; set; }
+		
 		''' 
 	}
 }

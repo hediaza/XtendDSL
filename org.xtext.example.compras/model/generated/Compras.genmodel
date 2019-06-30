@@ -46,8 +46,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Compras.ecore#//Entity/entityField"/>
     </genClasses>
     <genClasses ecoreClass="Compras.ecore#//EntityField">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Compras.ecore#//EntityField/entityFieldRequired"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Compras.ecore#//EntityField/entityFieldLabel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Compras.ecore#//EntityField/entityType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Compras.ecore#//EntityField/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Compras.ecore#//EntityFieldLabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Compras.ecore#//EntityFieldLabel/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Compras.ecore#//EntityFieldRequired">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Compras.ecore#//EntityFieldRequired/name"/>
     </genClasses>
     <genClasses ecoreClass="Compras.ecore#//EntityType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Compras.ecore#//EntityType/entity"/>

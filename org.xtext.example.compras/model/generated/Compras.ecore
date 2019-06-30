@@ -28,8 +28,18 @@
         eType="#//EntityField" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityField">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityFieldRequired" eType="#//EntityFieldRequired"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityFieldLabel" eType="#//EntityFieldLabel"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityType" eType="#//EntityType"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityFieldLabel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityFieldRequired">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityType">

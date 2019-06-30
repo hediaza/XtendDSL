@@ -24,6 +24,8 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.ModuleTech;
@@ -123,6 +125,16 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
       public Adapter caseEntityField(EntityField object)
       {
         return createEntityFieldAdapter();
+      }
+      @Override
+      public Adapter caseEntityFieldLabel(EntityFieldLabel object)
+      {
+        return createEntityFieldLabelAdapter();
+      }
+      @Override
+      public Adapter caseEntityFieldRequired(EntityFieldRequired object)
+      {
+        return createEntityFieldRequiredAdapter();
       }
       @Override
       public Adapter caseEntityType(EntityType object)
@@ -317,6 +329,36 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEntityFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.EntityFieldLabel <em>Entity Field Label</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.EntityFieldLabel
+   * @generated
+   */
+  public Adapter createEntityFieldLabelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.EntityFieldRequired <em>Entity Field Required</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.EntityFieldRequired
+   * @generated
+   */
+  public Adapter createEntityFieldRequiredAdapter()
   {
     return null;
   }
