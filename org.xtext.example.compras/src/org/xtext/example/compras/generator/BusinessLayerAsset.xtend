@@ -15,12 +15,17 @@ class BusinessLayerAsset {
 	CharSequence createImplementationScript 
 	CharSequence createInterfaceScript
 	//READ
-	CharSequence viewGridImplementationScript
+	CharSequence viewGridInterfaceScript
+	CharSequence getInterfaceScript
 	CharSequence viewDropDownInterfaceScript
+	CharSequence viewGridImplementationScript
 	CharSequence getImplementationScript
+	CharSequence viewDropDownImplementationScript
 	//UPDATE
+	CharSequence editInterfaceScript
 	CharSequence editImplementationScript
 	//
+	CharSequence deleteInterfaceScript
 	CharSequence deleteImplementationScript
 	
 	def doGenerate(Resource resource,
@@ -53,27 +58,29 @@ class BusinessLayerAsset {
 		// READ
 		val isViewGridAction = actionType.filter[it.name == "VIEW_GRID"].size		
 		if (isViewGridAction >= 1) {
+			viewGridInterfaceScript = compileViewGrid(functionality, CrudType.INTERFACE)
 			viewGridImplementationScript = compileViewGrid(functionality, CrudType.IMPLEMENTATION)	
 		}
 		
 		val isViewDropDownAction = actionType.filter[it.name == "VIEW_DROPDOWN"].size		
 		if (isViewDropDownAction >= 1) {
 			viewDropDownInterfaceScript = compileViewDropDown(functionality, CrudType.INTERFACE)
+			viewDropDownImplementationScript = compileViewDropDown(functionality, CrudType.IMPLEMENTATION)
+			getInterfaceScript = compileGet(functionality, CrudType.INTERFACE)
 			getImplementationScript = compileGet(functionality, CrudType.IMPLEMENTATION)
-			//viewDropDownImplementationScript = compileViewDropDown(entity, CrudType.IMPLEMENTATION)	
 		}
 		
 		// UPDATE
 		val isEditAction = actionType.filter[it.name == "EDIT"].size		
 		if (isEditAction >= 1) {
-			//getInterfaceScript = compileGet(entity, CrudType.INTERFACE)
+			editInterfaceScript = compileEdit(functionality, CrudType.INTERFACE)
 			editImplementationScript = compileEdit(functionality, CrudType.IMPLEMENTATION)	
 		}
 		
 		
 		val isDeleteAction = actionType.filter[it.name == "DELETE"].size		
 		if (isDeleteAction >= 1) {
-			//deleteInterfaceScript = compileDelete(entity, CrudType.INTERFACE)
+			deleteInterfaceScript = compileDelete(functionality, CrudType.INTERFACE)
 			deleteImplementationScript = compileDelete(functionality, CrudType.IMPLEMENTATION)	
 		} 
 		
@@ -91,10 +98,11 @@ class BusinessLayerAsset {
 			public interface «functionality.entity.IRepositoryName»
 			{
 				«createInterfaceScript»
-				
+				«viewGridInterfaceScript»
 				«viewDropDownInterfaceScript»
-				
-
+				«getInterfaceScript»
+				«editInterfaceScript»
+				«deleteInterfaceScript»
 			}
 			
 			public class «functionality.blName» : BaseBL
@@ -115,7 +123,7 @@ class BusinessLayerAsset {
 				
 				#region READ
 					«viewGridImplementationScript»
-					«viewDropDownInterfaceScript»
+					«viewDropDownImplementationScript»
 					«getImplementationScript»
 				#endregion
 				
@@ -181,7 +189,7 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				IEnumerable<«entity.dtoGridName»> ListarGrid();	
+				Result<IEnumerable<«entity.dtoGridName»>> ListarGrid();
 				'''
 			
 			case CrudType.IMPLEMENTATION : {		
@@ -264,7 +272,7 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				«entity.dtoName» Obtener(int id);	
+				Result<«entity.dtoName»> Obtener(int id);
 				'''
 			
 			case CrudType.IMPLEMENTATION : {
@@ -306,7 +314,7 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				void Editar(«entity.dtoName» «entity.dtoCamelCaseName», IDbTransaction atom);	
+				Result Editar(«entity.dtoName» «entity.dtoCamelCaseName»);
 				'''
 			
 			case CrudType.IMPLEMENTATION : {
@@ -350,7 +358,7 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				void Eliminar(int id, IDbTransaction atom);	
+				Result Eliminar(int id);	
 				'''
 			
 			case CrudType.IMPLEMENTATION : {			
