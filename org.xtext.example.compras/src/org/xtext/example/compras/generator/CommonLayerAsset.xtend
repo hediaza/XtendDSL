@@ -13,13 +13,14 @@ class CommonLayerAsset {
 	
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
-				   	
+		// Genera los archivos de los modelos configurados en la instancia del DSL	 	   	
 		for (e : resource.allContents.toIterable.filter(CommonLayerRef)) {
     		var moduleName = (e.entity.eContainer as Module).name
 
         	fsa.generateFile("Models/" + moduleName + "/" + e.entity.dtoName + ".cs", compile(e.entity, moduleName))
     	}
-
+    	
+    	// TODO: Genera archivo del proyecto para la capa de acceso en comun "Models.csproj"
 	}	
 	
 	def compile(Entity e, String moduleName)  {
