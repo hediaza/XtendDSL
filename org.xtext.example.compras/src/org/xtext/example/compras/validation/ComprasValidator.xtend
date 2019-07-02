@@ -9,6 +9,8 @@ import org.xtext.example.compras.compras.ComprasPackage
 import org.xtext.example.compras.compras.EntityField
 import org.xtext.example.compras.compras.Entity
 import org.xtext.example.compras.compras.CommonFieldType
+import org.xtext.example.compras.compras.FuncViewDropDownAction
+import org.xtext.example.compras.compras.Functionality
 
 /**
  * This class contains custom validation rules. 
@@ -45,7 +47,21 @@ class ComprasValidator extends AbstractComprasValidator {
 				  ComprasPackage.Literals.ENTITY_FIELD__NAME
 			)
 		}
+	}  
+	
+	
+	@Check
+	def void checkEntityNameIsUnique(Entity entity) {
+		var module = entity.eContainer as Module
+		var countField = module.entity.filter[it.name == entity.name].size
+		
+		if (countField > 1) {
+			error("Los nombres de las entidades deben ser unicos", 
+				  ComprasPackage.Literals.ENTITY__NAME
+			)
+		}
 	}
+	
 	
 	@Check
 	def void checkEntityHasFieldNameId(Entity entity) {		
@@ -63,9 +79,28 @@ class ComprasValidator extends AbstractComprasValidator {
 				  ComprasPackage.Literals.ENTITY__NAME
 			)
 		}
-		
-		
+	}
+	
 
+	@Check
+	def void checkFuncViewDropDownActionIsRelatedInEntityWithAttribute(FuncViewDropDownAction funcViewDropDownAction) {
+		var functionality = funcViewDropDownAction.eContainer as Functionality
+		
+		try {
+			var entityField = functionality.entity.entityField.filter[it.name == "Nombre"].get(0)
+			
+			if (entityField.entityType.commonFieldType != CommonFieldType.STRING) {
+				error('El atributo "Nombre" debe ser de tipo "string" en la entidad relacionada', 
+					funcViewDropDownAction.eContainer, funcViewDropDownAction.eContainingFeature, -1
+				)
+			}
+			
+		} catch (Exception e) {
+			error('El atributo "Nombre" se debe definir obligatoriamente en la entidad relacionada', 
+				  funcViewDropDownAction.eContainer, funcViewDropDownAction.eContainingFeature,-1
+			)
+		}
+		
 	}
 	
 }

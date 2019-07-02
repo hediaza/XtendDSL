@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.compras.compras.EntityField#getEntityFieldRequired <em>Entity Field Required</em>}</li>
+ *   <li>{@link org.xtext.example.compras.compras.EntityField#getEntityFieldLabel <em>Entity Field Label</em>}</li>
  *   <li>{@link org.xtext.example.compras.compras.EntityField#getEntityType <em>Entity Type</em>}</li>
  *   <li>{@link org.xtext.example.compras.compras.EntityField#getName <em>Name</em>}</li>
  * </ul>
@@ -24,6 +26,50 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EntityField extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Entity Field Required</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Entity Field Required</em>' containment reference.
+   * @see #setEntityFieldRequired(EntityFieldRequired)
+   * @see org.xtext.example.compras.compras.ComprasPackage#getEntityField_EntityFieldRequired()
+   * @model containment="true"
+   * @generated
+   */
+  EntityFieldRequired getEntityFieldRequired();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.compras.compras.EntityField#getEntityFieldRequired <em>Entity Field Required</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Entity Field Required</em>' containment reference.
+   * @see #getEntityFieldRequired()
+   * @generated
+   */
+  void setEntityFieldRequired(EntityFieldRequired value);
+
+  /**
+   * Returns the value of the '<em><b>Entity Field Label</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Entity Field Label</em>' containment reference.
+   * @see #setEntityFieldLabel(EntityFieldLabel)
+   * @see org.xtext.example.compras.compras.ComprasPackage#getEntityField_EntityFieldLabel()
+   * @model containment="true"
+   * @generated
+   */
+  EntityFieldLabel getEntityFieldLabel();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.compras.compras.EntityField#getEntityFieldLabel <em>Entity Field Label</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Entity Field Label</em>' containment reference.
+   * @see #getEntityFieldLabel()
+   * @generated
+   */
+  void setEntityFieldLabel(EntityFieldLabel value);
+
   /**
    * Returns the value of the '<em><b>Entity Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

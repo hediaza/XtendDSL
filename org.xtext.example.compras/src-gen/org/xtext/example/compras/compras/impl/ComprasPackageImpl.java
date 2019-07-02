@@ -28,9 +28,16 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
+import org.xtext.example.compras.compras.FuncCreateAction;
+import org.xtext.example.compras.compras.FuncDeleteAction;
+import org.xtext.example.compras.compras.FuncEditAction;
+import org.xtext.example.compras.compras.FuncViewDropDownAction;
+import org.xtext.example.compras.compras.FuncViewGridAction;
 import org.xtext.example.compras.compras.Functionality;
-import org.xtext.example.compras.compras.FunctionalityFieldType;
+import org.xtext.example.compras.compras.FunctionalityActionType;
 import org.xtext.example.compras.compras.ModuleTech;
 import org.xtext.example.compras.compras.PresentationLayer;
 import org.xtext.example.compras.compras.Relations;
@@ -90,6 +97,20 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass entityFieldLabelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityFieldRequiredEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass entityTypeEClass = null;
 
   /**
@@ -98,6 +119,48 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   private EClass functionalityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionalityActionTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcCreateActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcViewGridActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcViewDropDownActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcEditActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcDeleteActionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -231,13 +294,6 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   private EEnum commonFieldTypeEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum functionalityFieldTypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -487,7 +543,7 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
-  public EReference getEntityField_EntityType()
+  public EReference getEntityField_EntityFieldRequired()
   {
     return (EReference)entityFieldEClass.getEStructuralFeatures().get(0);
   }
@@ -498,9 +554,75 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
+  public EReference getEntityField_EntityFieldLabel()
+  {
+    return (EReference)entityFieldEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEntityField_EntityType()
+  {
+    return (EReference)entityFieldEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getEntityField_Name()
   {
-    return (EAttribute)entityFieldEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)entityFieldEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntityFieldLabel()
+  {
+    return entityFieldLabelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityFieldLabel_Name()
+  {
+    return (EAttribute)entityFieldLabelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntityFieldRequired()
+  {
+    return entityFieldRequiredEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityFieldRequired_Name()
+  {
+    return (EAttribute)entityFieldRequiredEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -575,9 +697,86 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
-  public EAttribute getFunctionality_FunctionalityFieldType()
+  public EReference getFunctionality_FunctionalityActionType()
   {
-    return (EAttribute)functionalityEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionalityEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionalityActionType()
+  {
+    return functionalityActionTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionalityActionType_Name()
+  {
+    return (EAttribute)functionalityActionTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncCreateAction()
+  {
+    return funcCreateActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncViewGridAction()
+  {
+    return funcViewGridActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncViewDropDownAction()
+  {
+    return funcViewDropDownActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncEditAction()
+  {
+    return funcEditActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncDeleteAction()
+  {
+    return funcDeleteActionEClass;
   }
 
   /**
@@ -1411,17 +1610,6 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
    * @generated
    */
   @Override
-  public EEnum getFunctionalityFieldType()
-  {
-    return functionalityFieldTypeEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EEnum getRelationsType()
   {
     return relationsTypeEEnum;
@@ -1488,8 +1676,16 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     createEReference(entityEClass, ENTITY__ENTITY_FIELD);
 
     entityFieldEClass = createEClass(ENTITY_FIELD);
+    createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_FIELD_REQUIRED);
+    createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_FIELD_LABEL);
     createEReference(entityFieldEClass, ENTITY_FIELD__ENTITY_TYPE);
     createEAttribute(entityFieldEClass, ENTITY_FIELD__NAME);
+
+    entityFieldLabelEClass = createEClass(ENTITY_FIELD_LABEL);
+    createEAttribute(entityFieldLabelEClass, ENTITY_FIELD_LABEL__NAME);
+
+    entityFieldRequiredEClass = createEClass(ENTITY_FIELD_REQUIRED);
+    createEAttribute(entityFieldRequiredEClass, ENTITY_FIELD_REQUIRED__NAME);
 
     entityTypeEClass = createEClass(ENTITY_TYPE);
     createEReference(entityTypeEClass, ENTITY_TYPE__ENTITY);
@@ -1498,7 +1694,20 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     functionalityEClass = createEClass(FUNCTIONALITY);
     createEAttribute(functionalityEClass, FUNCTIONALITY__NAME);
     createEReference(functionalityEClass, FUNCTIONALITY__ENTITY);
-    createEAttribute(functionalityEClass, FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE);
+    createEReference(functionalityEClass, FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE);
+
+    functionalityActionTypeEClass = createEClass(FUNCTIONALITY_ACTION_TYPE);
+    createEAttribute(functionalityActionTypeEClass, FUNCTIONALITY_ACTION_TYPE__NAME);
+
+    funcCreateActionEClass = createEClass(FUNC_CREATE_ACTION);
+
+    funcViewGridActionEClass = createEClass(FUNC_VIEW_GRID_ACTION);
+
+    funcViewDropDownActionEClass = createEClass(FUNC_VIEW_DROP_DOWN_ACTION);
+
+    funcEditActionEClass = createEClass(FUNC_EDIT_ACTION);
+
+    funcDeleteActionEClass = createEClass(FUNC_DELETE_ACTION);
 
     architectureEClass = createEClass(ARCHITECTURE);
     createEReference(architectureEClass, ARCHITECTURE__PRESENTATION_LAYER);
@@ -1594,7 +1803,6 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
 
     // Create enums
     commonFieldTypeEEnum = createEEnum(COMMON_FIELD_TYPE);
-    functionalityFieldTypeEEnum = createEEnum(FUNCTIONALITY_FIELD_TYPE);
     relationsTypeEEnum = createEEnum(RELATIONS_TYPE);
     databaseRDBMSTypeEEnum = createEEnum(DATABASE_RDBMS_TYPE);
   }
@@ -1628,6 +1836,11 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    funcCreateActionEClass.getESuperTypes().add(this.getFunctionalityActionType());
+    funcViewGridActionEClass.getESuperTypes().add(this.getFunctionalityActionType());
+    funcViewDropDownActionEClass.getESuperTypes().add(this.getFunctionalityActionType());
+    funcEditActionEClass.getESuperTypes().add(this.getFunctionalityActionType());
+    funcDeleteActionEClass.getESuperTypes().add(this.getFunctionalityActionType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(solutionEClass, Solution.class, "Solution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1649,8 +1862,16 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     initEReference(getEntity_EntityField(), this.getEntityField(), null, "entityField", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityFieldEClass, EntityField.class, "EntityField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntityField_EntityFieldRequired(), this.getEntityFieldRequired(), null, "entityFieldRequired", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityField_EntityFieldLabel(), this.getEntityFieldLabel(), null, "entityFieldLabel", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityField_EntityType(), this.getEntityType(), null, "entityType", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityField_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityFieldLabelEClass, EntityFieldLabel.class, "EntityFieldLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityFieldLabel_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityFieldLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityFieldRequiredEClass, EntityFieldRequired.class, "EntityFieldRequired", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityFieldRequired_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityFieldRequired.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityTypeEClass, EntityType.class, "EntityType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEntityType_Entity(), this.getEntity(), null, "entity", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1659,7 +1880,20 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     initEClass(functionalityEClass, Functionality.class, "Functionality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionality_Name(), ecorePackage.getEString(), "name", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionality_Entity(), this.getEntity(), null, "entity", null, 0, 1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionality_FunctionalityFieldType(), this.getFunctionalityFieldType(), "functionalityFieldType", null, 0, -1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionality_FunctionalityActionType(), this.getFunctionalityActionType(), null, "functionalityActionType", null, 0, -1, Functionality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionalityActionTypeEClass, FunctionalityActionType.class, "FunctionalityActionType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionalityActionType_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionalityActionType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcCreateActionEClass, FuncCreateAction.class, "FuncCreateAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(funcViewGridActionEClass, FuncViewGridAction.class, "FuncViewGridAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(funcViewDropDownActionEClass, FuncViewDropDownAction.class, "FuncViewDropDownAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(funcEditActionEClass, FuncEditAction.class, "FuncEditAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(funcDeleteActionEClass, FuncDeleteAction.class, "FuncDeleteAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(architectureEClass, Architecture.class, "Architecture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getArchitecture_PresentationLayer(), this.getPresentationLayer(), null, "presentationLayer", null, 0, 1, Architecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1759,13 +1993,7 @@ public class ComprasPackageImpl extends EPackageImpl implements ComprasPackage
     addEEnumLiteral(commonFieldTypeEEnum, CommonFieldType.INT);
     addEEnumLiteral(commonFieldTypeEEnum, CommonFieldType.BOOL);
     addEEnumLiteral(commonFieldTypeEEnum, CommonFieldType.FLOAT);
-
-    initEEnum(functionalityFieldTypeEEnum, FunctionalityFieldType.class, "FunctionalityFieldType");
-    addEEnumLiteral(functionalityFieldTypeEEnum, FunctionalityFieldType.CREATE);
-    addEEnumLiteral(functionalityFieldTypeEEnum, FunctionalityFieldType.VIEW_GRID);
-    addEEnumLiteral(functionalityFieldTypeEEnum, FunctionalityFieldType.VIEW_DROPDOWN);
-    addEEnumLiteral(functionalityFieldTypeEEnum, FunctionalityFieldType.EDIT);
-    addEEnumLiteral(functionalityFieldTypeEEnum, FunctionalityFieldType.DELETE);
+    addEEnumLiteral(commonFieldTypeEEnum, CommonFieldType.DATE);
 
     initEEnum(relationsTypeEEnum, RelationsType.class, "RelationsType");
     addEEnumLiteral(relationsTypeEEnum, RelationsType.ALLOWED_TO_USE);

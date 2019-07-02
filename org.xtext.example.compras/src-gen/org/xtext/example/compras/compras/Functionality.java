@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.compras.compras.Functionality#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.compras.compras.Functionality#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.compras.compras.Functionality#getFunctionalityFieldType <em>Functionality Field Type</em>}</li>
+ *   <li>{@link org.xtext.example.compras.compras.Functionality#getFunctionalityActionType <em>Functionality Action Type</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.compras.compras.ComprasPackage#getFunctionality()
@@ -72,17 +72,15 @@ public interface Functionality extends EObject
   void setEntity(Entity value);
 
   /**
-   * Returns the value of the '<em><b>Functionality Field Type</b></em>' attribute list.
-   * The list contents are of type {@link org.xtext.example.compras.compras.FunctionalityFieldType}.
-   * The literals are from the enumeration {@link org.xtext.example.compras.compras.FunctionalityFieldType}.
+   * Returns the value of the '<em><b>Functionality Action Type</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.compras.compras.FunctionalityActionType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Functionality Field Type</em>' attribute list.
-   * @see org.xtext.example.compras.compras.FunctionalityFieldType
-   * @see org.xtext.example.compras.compras.ComprasPackage#getFunctionality_FunctionalityFieldType()
-   * @model unique="false"
+   * @return the value of the '<em>Functionality Action Type</em>' containment reference list.
+   * @see org.xtext.example.compras.compras.ComprasPackage#getFunctionality_FunctionalityActionType()
+   * @model containment="true"
    * @generated
    */
-  EList<FunctionalityFieldType> getFunctionalityFieldType();
+  EList<FunctionalityActionType> getFunctionalityActionType();
 
 } // Functionality

@@ -58,7 +58,17 @@ public enum CommonFieldType implements Enumerator
    * @generated
    * @ordered
    */
-  FLOAT(3, "FLOAT", "float");
+  FLOAT(3, "FLOAT", "float"),
+
+  /**
+   * The '<em><b>DATE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #DATE_VALUE
+   * @generated
+   * @ordered
+   */
+  DATE(4, "DATE", "datetime");
 
   /**
    * The '<em><b>STRING</b></em>' literal value.
@@ -105,6 +115,17 @@ public enum CommonFieldType implements Enumerator
   public static final int FLOAT_VALUE = 3;
 
   /**
+   * The '<em><b>DATE</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #DATE
+   * @model literal="datetime"
+   * @generated
+   * @ordered
+   */
+  public static final int DATE_VALUE = 4;
+
+  /**
    * An array of all the '<em><b>Common Field Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -117,6 +138,7 @@ public enum CommonFieldType implements Enumerator
       INT,
       BOOL,
       FLOAT,
+      DATE,
     };
 
   /**
@@ -185,6 +207,7 @@ public enum CommonFieldType implements Enumerator
       case INT_VALUE: return INT;
       case BOOL_VALUE: return BOOL;
       case FLOAT_VALUE: return FLOAT;
+      case DATE_VALUE: return DATE;
     }
     return null;
   }

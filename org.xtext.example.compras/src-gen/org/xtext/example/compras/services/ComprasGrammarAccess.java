@@ -189,23 +189,23 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cEntityAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cEntityEntityParserRuleCall_8_0 = (RuleCall)cEntityAssignment_8.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cFunctionalitiesKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Keyword cColonKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cLeftCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Assignment cFunctionalityAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cFunctionalityFunctionalityParserRuleCall_13_0 = (RuleCall)cFunctionalityAssignment_13.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cFunctionalitiesKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cColonKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_10_2 = (Keyword)cGroup_10.eContents().get(2);
+		private final Assignment cFunctionalityAssignment_10_3 = (Assignment)cGroup_10.eContents().get(3);
+		private final RuleCall cFunctionalityFunctionalityParserRuleCall_10_3_0 = (RuleCall)cFunctionalityAssignment_10_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//Module:
 		//	'Module' ':' name=ID ':' '{'
-		//	'Entities' ':' '{' entity+=Entity* '}'
-		//	'Functionalities' ':' '{' functionality+=Functionality* '}'
+		//	'Entities' ':' '{' entity+=Entity* '}' ('Functionalities' ':' '{' functionality+=Functionality* '}')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Module' ':' name=ID ':' '{' 'Entities' ':' '{' entity+=Entity* '}' 'Functionalities' ':' '{'
-		//functionality+=Functionality* '}' '}'
+		//'Module' ':' name=ID ':' '{' 'Entities' ':' '{' entity+=Entity* '}' ('Functionalities' ':' '{'
+		//functionality+=Functionality* '}')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Module'
@@ -244,26 +244,29 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 		
+		//('Functionalities' ':' '{' functionality+=Functionality* '}')?
+		public Group getGroup_10() { return cGroup_10; }
+		
 		//'Functionalities'
-		public Keyword getFunctionalitiesKeyword_10() { return cFunctionalitiesKeyword_10; }
+		public Keyword getFunctionalitiesKeyword_10_0() { return cFunctionalitiesKeyword_10_0; }
 		
 		//':'
-		public Keyword getColonKeyword_11() { return cColonKeyword_11; }
+		public Keyword getColonKeyword_10_1() { return cColonKeyword_10_1; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_12() { return cLeftCurlyBracketKeyword_12; }
+		public Keyword getLeftCurlyBracketKeyword_10_2() { return cLeftCurlyBracketKeyword_10_2; }
 		
 		//functionality+=Functionality*
-		public Assignment getFunctionalityAssignment_13() { return cFunctionalityAssignment_13; }
+		public Assignment getFunctionalityAssignment_10_3() { return cFunctionalityAssignment_10_3; }
 		
 		//Functionality
-		public RuleCall getFunctionalityFunctionalityParserRuleCall_13_0() { return cFunctionalityFunctionalityParserRuleCall_13_0; }
+		public RuleCall getFunctionalityFunctionalityParserRuleCall_10_3_0() { return cFunctionalityFunctionalityParserRuleCall_10_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_14() { return cRightCurlyBracketKeyword_14; }
+		public Keyword getRightCurlyBracketKeyword_10_4() { return cRightCurlyBracketKeyword_10_4; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 	}
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.Entity");
@@ -309,29 +312,109 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityFieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityField");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cEntityTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cEntityTypeEntityTypeParserRuleCall_0_0 = (RuleCall)cEntityTypeAssignment_0.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cEntityFieldRequiredAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0 = (RuleCall)cEntityFieldRequiredAssignment_0.eContents().get(0);
+		private final Assignment cEntityFieldLabelAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cEntityFieldLabelEntityFieldLabelParserRuleCall_1_0 = (RuleCall)cEntityFieldLabelAssignment_1.eContents().get(0);
+		private final Assignment cEntityTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEntityTypeEntityTypeParserRuleCall_2_0 = (RuleCall)cEntityTypeAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		
 		//EntityField:
+		//	entityFieldRequired=EntityFieldRequired?
+		//	entityFieldLabel=EntityFieldLabel?
 		//	entityType=EntityType name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//entityType=EntityType name=ID
+		//entityFieldRequired=EntityFieldRequired? entityFieldLabel=EntityFieldLabel? entityType=EntityType name=ID
 		public Group getGroup() { return cGroup; }
 		
+		//entityFieldRequired=EntityFieldRequired?
+		public Assignment getEntityFieldRequiredAssignment_0() { return cEntityFieldRequiredAssignment_0; }
+		
+		//EntityFieldRequired
+		public RuleCall getEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0() { return cEntityFieldRequiredEntityFieldRequiredParserRuleCall_0_0; }
+		
+		//entityFieldLabel=EntityFieldLabel?
+		public Assignment getEntityFieldLabelAssignment_1() { return cEntityFieldLabelAssignment_1; }
+		
+		//EntityFieldLabel
+		public RuleCall getEntityFieldLabelEntityFieldLabelParserRuleCall_1_0() { return cEntityFieldLabelEntityFieldLabelParserRuleCall_1_0; }
+		
 		//entityType=EntityType
-		public Assignment getEntityTypeAssignment_0() { return cEntityTypeAssignment_0; }
+		public Assignment getEntityTypeAssignment_2() { return cEntityTypeAssignment_2; }
 		
 		//EntityType
-		public RuleCall getEntityTypeEntityTypeParserRuleCall_0_0() { return cEntityTypeEntityTypeParserRuleCall_0_0; }
+		public RuleCall getEntityTypeEntityTypeParserRuleCall_2_0() { return cEntityTypeEntityTypeParserRuleCall_2_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+	}
+	public class EntityFieldLabelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityFieldLabel");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLabelKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//EntityFieldLabel:
+		//	'[' 'label' ':' name=STRING ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' 'label' ':' name=STRING ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//'label'
+		public Keyword getLabelKeyword_1() { return cLabelKeyword_1; }
+		
+		//':'
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
+	}
+	public class EntityFieldRequiredElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityFieldRequired");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cNameRequiredKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//EntityFieldRequired:
+		//	'[' name='required' ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' name='required' ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//name='required'
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//'required'
+		public Keyword getNameRequiredKeyword_1_0() { return cNameRequiredKeyword_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 	public class EntityTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.EntityType");
@@ -375,17 +458,17 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEntityEntityFQNParserRuleCall_2_0_1 = (RuleCall)cEntityEntityCrossReference_2_0.eContents().get(1);
 		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cFunctionalityFieldTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cFunctionalityFieldTypeFunctionalityFieldTypeEnumRuleCall_5_0 = (RuleCall)cFunctionalityFieldTypeAssignment_5.eContents().get(0);
+		private final Assignment cFunctionalityActionTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFunctionalityActionTypeFunctionalityActionTypeParserRuleCall_5_0 = (RuleCall)cFunctionalityActionTypeAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Functionality:
 		//	name=ID 'RelEntity' entity=[Entity|FQN] ':' '{'
-		//	functionalityFieldType+=FunctionalityFieldType*
+		//	functionalityActionType+=FunctionalityActionType*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID 'RelEntity' entity=[Entity|FQN] ':' '{' functionalityFieldType+=FunctionalityFieldType* '}'
+		//name=ID 'RelEntity' entity=[Entity|FQN] ':' '{' functionalityActionType+=FunctionalityActionType* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -412,14 +495,120 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 		
-		//functionalityFieldType+=FunctionalityFieldType*
-		public Assignment getFunctionalityFieldTypeAssignment_5() { return cFunctionalityFieldTypeAssignment_5; }
+		//functionalityActionType+=FunctionalityActionType*
+		public Assignment getFunctionalityActionTypeAssignment_5() { return cFunctionalityActionTypeAssignment_5; }
 		
-		//FunctionalityFieldType
-		public RuleCall getFunctionalityFieldTypeFunctionalityFieldTypeEnumRuleCall_5_0() { return cFunctionalityFieldTypeFunctionalityFieldTypeEnumRuleCall_5_0; }
+		//FunctionalityActionType
+		public RuleCall getFunctionalityActionTypeFunctionalityActionTypeParserRuleCall_5_0() { return cFunctionalityActionTypeFunctionalityActionTypeParserRuleCall_5_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class FunctionalityActionTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FunctionalityActionType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cFuncCreateActionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFuncViewGridActionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cFuncViewDropDownActionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cFuncEditActionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cFuncDeleteActionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		
+		//FunctionalityActionType:
+		//	FuncCreateAction | FuncViewGridAction | FuncViewDropDownAction | FuncEditAction | FuncDeleteAction;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//FuncCreateAction | FuncViewGridAction | FuncViewDropDownAction | FuncEditAction | FuncDeleteAction
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//FuncCreateAction
+		public RuleCall getFuncCreateActionParserRuleCall_0() { return cFuncCreateActionParserRuleCall_0; }
+		
+		//FuncViewGridAction
+		public RuleCall getFuncViewGridActionParserRuleCall_1() { return cFuncViewGridActionParserRuleCall_1; }
+		
+		//FuncViewDropDownAction
+		public RuleCall getFuncViewDropDownActionParserRuleCall_2() { return cFuncViewDropDownActionParserRuleCall_2; }
+		
+		//FuncEditAction
+		public RuleCall getFuncEditActionParserRuleCall_3() { return cFuncEditActionParserRuleCall_3; }
+		
+		//FuncDeleteAction
+		public RuleCall getFuncDeleteActionParserRuleCall_4() { return cFuncDeleteActionParserRuleCall_4; }
+	}
+	public class FuncCreateActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FuncCreateAction");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNameCREATEKeyword_0 = (Keyword)cNameAssignment.eContents().get(0);
+		
+		//FuncCreateAction:
+		//	name="CREATE";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="CREATE"
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//"CREATE"
+		public Keyword getNameCREATEKeyword_0() { return cNameCREATEKeyword_0; }
+	}
+	public class FuncViewGridActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FuncViewGridAction");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNameVIEW_GRIDKeyword_0 = (Keyword)cNameAssignment.eContents().get(0);
+		
+		//FuncViewGridAction:
+		//	name="VIEW_GRID";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="VIEW_GRID"
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//"VIEW_GRID"
+		public Keyword getNameVIEW_GRIDKeyword_0() { return cNameVIEW_GRIDKeyword_0; }
+	}
+	public class FuncViewDropDownActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FuncViewDropDownAction");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNameVIEW_DROPDOWNKeyword_0 = (Keyword)cNameAssignment.eContents().get(0);
+		
+		//FuncViewDropDownAction:
+		//	name="VIEW_DROPDOWN";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="VIEW_DROPDOWN"
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//"VIEW_DROPDOWN"
+		public Keyword getNameVIEW_DROPDOWNKeyword_0() { return cNameVIEW_DROPDOWNKeyword_0; }
+	}
+	public class FuncEditActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FuncEditAction");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNameEDITKeyword_0 = (Keyword)cNameAssignment.eContents().get(0);
+		
+		//FuncEditAction:
+		//	name="EDIT";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="EDIT"
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//"EDIT"
+		public Keyword getNameEDITKeyword_0() { return cNameEDITKeyword_0; }
+	}
+	public class FuncDeleteActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FuncDeleteAction");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNameDELETEKeyword_0 = (Keyword)cNameAssignment.eContents().get(0);
+		
+		//FuncDeleteAction:
+		//	name="DELETE";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="DELETE"
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//"DELETE"
+		public Keyword getNameDELETEKeyword_0() { return cNameDELETEKeyword_0; }
 	}
 	public class ArchitectureElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.Architecture");
@@ -1607,15 +1796,18 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBOOLBoolKeyword_2_0 = (Keyword)cBOOLEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cFLOATEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cFLOATFloatKeyword_3_0 = (Keyword)cFLOATEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cDATEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cDATEDatetimeKeyword_4_0 = (Keyword)cDATEEnumLiteralDeclaration_4.eContents().get(0);
 		
 		//enum CommonFieldType:
 		//	STRING='string' |
 		//	INT='int' |
 		//	BOOL='bool' |
-		//	FLOAT='float';
+		//	FLOAT='float' |
+		//	DATE='datetime';
 		public EnumRule getRule() { return rule; }
 		
-		//STRING='string' | INT='int' | BOOL='bool' | FLOAT='float'
+		//STRING='string' | INT='int' | BOOL='bool' | FLOAT='float' | DATE='datetime'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//STRING='string'
@@ -1641,61 +1833,12 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'float'
 		public Keyword getFLOATFloatKeyword_3_0() { return cFLOATFloatKeyword_3_0; }
-	}
-	public class FunctionalityFieldTypeElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.FunctionalityFieldType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cCREATEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cCREATECREATEKeyword_0_0 = (Keyword)cCREATEEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cVIEW_GRIDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cVIEW_GRIDVIEW_GRIDKeyword_1_0 = (Keyword)cVIEW_GRIDEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cVIEW_DROPDOWNEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cVIEW_DROPDOWNVIEW_DROPDOWNKeyword_2_0 = (Keyword)cVIEW_DROPDOWNEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cEDITEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cEDITEDITKeyword_3_0 = (Keyword)cEDITEnumLiteralDeclaration_3.eContents().get(0);
-		private final EnumLiteralDeclaration cDELETEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cDELETEDELETEKeyword_4_0 = (Keyword)cDELETEEnumLiteralDeclaration_4.eContents().get(0);
 		
-		//enum FunctionalityFieldType:
-		//	CREATE |
-		//	VIEW_GRID |
-		//	VIEW_DROPDOWN |
-		//	EDIT |
-		//	DELETE;
-		public EnumRule getRule() { return rule; }
+		//DATE='datetime'
+		public EnumLiteralDeclaration getDATEEnumLiteralDeclaration_4() { return cDATEEnumLiteralDeclaration_4; }
 		
-		//CREATE | VIEW_GRID | VIEW_DROPDOWN | EDIT | DELETE
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//CREATE
-		public EnumLiteralDeclaration getCREATEEnumLiteralDeclaration_0() { return cCREATEEnumLiteralDeclaration_0; }
-		
-		//'CREATE'
-		public Keyword getCREATECREATEKeyword_0_0() { return cCREATECREATEKeyword_0_0; }
-		
-		//VIEW_GRID
-		public EnumLiteralDeclaration getVIEW_GRIDEnumLiteralDeclaration_1() { return cVIEW_GRIDEnumLiteralDeclaration_1; }
-		
-		//'VIEW_GRID'
-		public Keyword getVIEW_GRIDVIEW_GRIDKeyword_1_0() { return cVIEW_GRIDVIEW_GRIDKeyword_1_0; }
-		
-		//VIEW_DROPDOWN
-		public EnumLiteralDeclaration getVIEW_DROPDOWNEnumLiteralDeclaration_2() { return cVIEW_DROPDOWNEnumLiteralDeclaration_2; }
-		
-		//'VIEW_DROPDOWN'
-		public Keyword getVIEW_DROPDOWNVIEW_DROPDOWNKeyword_2_0() { return cVIEW_DROPDOWNVIEW_DROPDOWNKeyword_2_0; }
-		
-		//EDIT
-		public EnumLiteralDeclaration getEDITEnumLiteralDeclaration_3() { return cEDITEnumLiteralDeclaration_3; }
-		
-		//'EDIT'
-		public Keyword getEDITEDITKeyword_3_0() { return cEDITEDITKeyword_3_0; }
-		
-		//DELETE
-		public EnumLiteralDeclaration getDELETEEnumLiteralDeclaration_4() { return cDELETEEnumLiteralDeclaration_4; }
-		
-		//'DELETE'
-		public Keyword getDELETEDELETEKeyword_4_0() { return cDELETEDELETEKeyword_4_0; }
+		//'datetime'
+		public Keyword getDATEDatetimeKeyword_4_0() { return cDATEDatetimeKeyword_4_0; }
 	}
 	public class RelationsTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.compras.Compras.RelationsType");
@@ -1756,10 +1899,17 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	private final ModuleElements pModule;
 	private final EntityElements pEntity;
 	private final EntityFieldElements pEntityField;
+	private final EntityFieldLabelElements pEntityFieldLabel;
+	private final EntityFieldRequiredElements pEntityFieldRequired;
 	private final EntityTypeElements pEntityType;
 	private final CommonFieldTypeElements eCommonFieldType;
 	private final FunctionalityElements pFunctionality;
-	private final FunctionalityFieldTypeElements eFunctionalityFieldType;
+	private final FunctionalityActionTypeElements pFunctionalityActionType;
+	private final FuncCreateActionElements pFuncCreateAction;
+	private final FuncViewGridActionElements pFuncViewGridAction;
+	private final FuncViewDropDownActionElements pFuncViewDropDownAction;
+	private final FuncEditActionElements pFuncEditAction;
+	private final FuncDeleteActionElements pFuncDeleteAction;
 	private final ArchitectureElements pArchitecture;
 	private final PresentationLayerElements pPresentationLayer;
 	private final ControllerSegmentLayerElements pControllerSegmentLayer;
@@ -1797,10 +1947,17 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModule = new ModuleElements();
 		this.pEntity = new EntityElements();
 		this.pEntityField = new EntityFieldElements();
+		this.pEntityFieldLabel = new EntityFieldLabelElements();
+		this.pEntityFieldRequired = new EntityFieldRequiredElements();
 		this.pEntityType = new EntityTypeElements();
 		this.eCommonFieldType = new CommonFieldTypeElements();
 		this.pFunctionality = new FunctionalityElements();
-		this.eFunctionalityFieldType = new FunctionalityFieldTypeElements();
+		this.pFunctionalityActionType = new FunctionalityActionTypeElements();
+		this.pFuncCreateAction = new FuncCreateActionElements();
+		this.pFuncViewGridAction = new FuncViewGridActionElements();
+		this.pFuncViewDropDownAction = new FuncViewDropDownActionElements();
+		this.pFuncEditAction = new FuncEditActionElements();
+		this.pFuncDeleteAction = new FuncDeleteActionElements();
 		this.pArchitecture = new ArchitectureElements();
 		this.pPresentationLayer = new PresentationLayerElements();
 		this.pControllerSegmentLayer = new ControllerSegmentLayerElements();
@@ -1893,8 +2050,7 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Module:
 	//	'Module' ':' name=ID ':' '{'
-	//	'Entities' ':' '{' entity+=Entity* '}'
-	//	'Functionalities' ':' '{' functionality+=Functionality* '}'
+	//	'Entities' ':' '{' entity+=Entity* '}' ('Functionalities' ':' '{' functionality+=Functionality* '}')?
 	//	'}';
 	public ModuleElements getModuleAccess() {
 		return pModule;
@@ -1917,6 +2073,8 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityField:
+	//	entityFieldRequired=EntityFieldRequired?
+	//	entityFieldLabel=EntityFieldLabel?
 	//	entityType=EntityType name=ID;
 	public EntityFieldElements getEntityFieldAccess() {
 		return pEntityField;
@@ -1924,6 +2082,26 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEntityFieldRule() {
 		return getEntityFieldAccess().getRule();
+	}
+	
+	//EntityFieldLabel:
+	//	'[' 'label' ':' name=STRING ']';
+	public EntityFieldLabelElements getEntityFieldLabelAccess() {
+		return pEntityFieldLabel;
+	}
+	
+	public ParserRule getEntityFieldLabelRule() {
+		return getEntityFieldLabelAccess().getRule();
+	}
+	
+	//EntityFieldRequired:
+	//	'[' name='required' ']';
+	public EntityFieldRequiredElements getEntityFieldRequiredAccess() {
+		return pEntityFieldRequired;
+	}
+	
+	public ParserRule getEntityFieldRequiredRule() {
+		return getEntityFieldRequiredAccess().getRule();
 	}
 	
 	//EntityType:
@@ -1940,7 +2118,8 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	//	STRING='string' |
 	//	INT='int' |
 	//	BOOL='bool' |
-	//	FLOAT='float';
+	//	FLOAT='float' |
+	//	DATE='datetime';
 	public CommonFieldTypeElements getCommonFieldTypeAccess() {
 		return eCommonFieldType;
 	}
@@ -1951,7 +2130,7 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Functionality:
 	//	name=ID 'RelEntity' entity=[Entity|FQN] ':' '{'
-	//	functionalityFieldType+=FunctionalityFieldType*
+	//	functionalityActionType+=FunctionalityActionType*
 	//	'}';
 	public FunctionalityElements getFunctionalityAccess() {
 		return pFunctionality;
@@ -1961,18 +2140,64 @@ public class ComprasGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionalityAccess().getRule();
 	}
 	
-	//enum FunctionalityFieldType:
-	//	CREATE |
-	//	VIEW_GRID |
-	//	VIEW_DROPDOWN |
-	//	EDIT |
-	//	DELETE;
-	public FunctionalityFieldTypeElements getFunctionalityFieldTypeAccess() {
-		return eFunctionalityFieldType;
+	//FunctionalityActionType:
+	//	FuncCreateAction | FuncViewGridAction | FuncViewDropDownAction | FuncEditAction | FuncDeleteAction;
+	public FunctionalityActionTypeElements getFunctionalityActionTypeAccess() {
+		return pFunctionalityActionType;
 	}
 	
-	public EnumRule getFunctionalityFieldTypeRule() {
-		return getFunctionalityFieldTypeAccess().getRule();
+	public ParserRule getFunctionalityActionTypeRule() {
+		return getFunctionalityActionTypeAccess().getRule();
+	}
+	
+	//FuncCreateAction:
+	//	name="CREATE";
+	public FuncCreateActionElements getFuncCreateActionAccess() {
+		return pFuncCreateAction;
+	}
+	
+	public ParserRule getFuncCreateActionRule() {
+		return getFuncCreateActionAccess().getRule();
+	}
+	
+	//FuncViewGridAction:
+	//	name="VIEW_GRID";
+	public FuncViewGridActionElements getFuncViewGridActionAccess() {
+		return pFuncViewGridAction;
+	}
+	
+	public ParserRule getFuncViewGridActionRule() {
+		return getFuncViewGridActionAccess().getRule();
+	}
+	
+	//FuncViewDropDownAction:
+	//	name="VIEW_DROPDOWN";
+	public FuncViewDropDownActionElements getFuncViewDropDownActionAccess() {
+		return pFuncViewDropDownAction;
+	}
+	
+	public ParserRule getFuncViewDropDownActionRule() {
+		return getFuncViewDropDownActionAccess().getRule();
+	}
+	
+	//FuncEditAction:
+	//	name="EDIT";
+	public FuncEditActionElements getFuncEditActionAccess() {
+		return pFuncEditAction;
+	}
+	
+	public ParserRule getFuncEditActionRule() {
+		return getFuncEditActionAccess().getRule();
+	}
+	
+	//FuncDeleteAction:
+	//	name="DELETE";
+	public FuncDeleteActionElements getFuncDeleteActionAccess() {
+		return pFuncDeleteAction;
+	}
+	
+	public ParserRule getFuncDeleteActionRule() {
+		return getFuncDeleteActionAccess().getRule();
 	}
 	
 	///* ----------------------------------

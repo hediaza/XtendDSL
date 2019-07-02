@@ -24,8 +24,16 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
+import org.xtext.example.compras.compras.FuncCreateAction;
+import org.xtext.example.compras.compras.FuncDeleteAction;
+import org.xtext.example.compras.compras.FuncEditAction;
+import org.xtext.example.compras.compras.FuncViewDropDownAction;
+import org.xtext.example.compras.compras.FuncViewGridAction;
 import org.xtext.example.compras.compras.Functionality;
+import org.xtext.example.compras.compras.FunctionalityActionType;
 import org.xtext.example.compras.compras.ModuleTech;
 import org.xtext.example.compras.compras.PresentationLayer;
 import org.xtext.example.compras.compras.Relations;
@@ -125,6 +133,16 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
         return createEntityFieldAdapter();
       }
       @Override
+      public Adapter caseEntityFieldLabel(EntityFieldLabel object)
+      {
+        return createEntityFieldLabelAdapter();
+      }
+      @Override
+      public Adapter caseEntityFieldRequired(EntityFieldRequired object)
+      {
+        return createEntityFieldRequiredAdapter();
+      }
+      @Override
       public Adapter caseEntityType(EntityType object)
       {
         return createEntityTypeAdapter();
@@ -133,6 +151,36 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFunctionality(Functionality object)
       {
         return createFunctionalityAdapter();
+      }
+      @Override
+      public Adapter caseFunctionalityActionType(FunctionalityActionType object)
+      {
+        return createFunctionalityActionTypeAdapter();
+      }
+      @Override
+      public Adapter caseFuncCreateAction(FuncCreateAction object)
+      {
+        return createFuncCreateActionAdapter();
+      }
+      @Override
+      public Adapter caseFuncViewGridAction(FuncViewGridAction object)
+      {
+        return createFuncViewGridActionAdapter();
+      }
+      @Override
+      public Adapter caseFuncViewDropDownAction(FuncViewDropDownAction object)
+      {
+        return createFuncViewDropDownActionAdapter();
+      }
+      @Override
+      public Adapter caseFuncEditAction(FuncEditAction object)
+      {
+        return createFuncEditActionAdapter();
+      }
+      @Override
+      public Adapter caseFuncDeleteAction(FuncDeleteAction object)
+      {
+        return createFuncDeleteActionAdapter();
       }
       @Override
       public Adapter caseArchitecture(Architecture object)
@@ -322,6 +370,36 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.EntityFieldLabel <em>Entity Field Label</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.EntityFieldLabel
+   * @generated
+   */
+  public Adapter createEntityFieldLabelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.EntityFieldRequired <em>Entity Field Required</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.EntityFieldRequired
+   * @generated
+   */
+  public Adapter createEntityFieldRequiredAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.EntityType <em>Entity Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -347,6 +425,96 @@ public class ComprasAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionalityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FunctionalityActionType <em>Functionality Action Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FunctionalityActionType
+   * @generated
+   */
+  public Adapter createFunctionalityActionTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FuncCreateAction <em>Func Create Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FuncCreateAction
+   * @generated
+   */
+  public Adapter createFuncCreateActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FuncViewGridAction <em>Func View Grid Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FuncViewGridAction
+   * @generated
+   */
+  public Adapter createFuncViewGridActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FuncViewDropDownAction <em>Func View Drop Down Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FuncViewDropDownAction
+   * @generated
+   */
+  public Adapter createFuncViewDropDownActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FuncEditAction <em>Func Edit Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FuncEditAction
+   * @generated
+   */
+  public Adapter createFuncEditActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.compras.compras.FuncDeleteAction <em>Func Delete Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.compras.compras.FuncDeleteAction
+   * @generated
+   */
+  public Adapter createFuncDeleteActionAdapter()
   {
     return null;
   }

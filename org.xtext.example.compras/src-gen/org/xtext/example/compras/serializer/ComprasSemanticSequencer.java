@@ -28,7 +28,14 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
+import org.xtext.example.compras.compras.FuncCreateAction;
+import org.xtext.example.compras.compras.FuncDeleteAction;
+import org.xtext.example.compras.compras.FuncEditAction;
+import org.xtext.example.compras.compras.FuncViewDropDownAction;
+import org.xtext.example.compras.compras.FuncViewGridAction;
 import org.xtext.example.compras.compras.Functionality;
 import org.xtext.example.compras.compras.ModuleTech;
 import org.xtext.example.compras.compras.PresentationLayer;
@@ -94,8 +101,29 @@ public class ComprasSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ComprasPackage.ENTITY_FIELD:
 				sequence_EntityField(context, (EntityField) semanticObject); 
 				return; 
+			case ComprasPackage.ENTITY_FIELD_LABEL:
+				sequence_EntityFieldLabel(context, (EntityFieldLabel) semanticObject); 
+				return; 
+			case ComprasPackage.ENTITY_FIELD_REQUIRED:
+				sequence_EntityFieldRequired(context, (EntityFieldRequired) semanticObject); 
+				return; 
 			case ComprasPackage.ENTITY_TYPE:
 				sequence_EntityType(context, (EntityType) semanticObject); 
+				return; 
+			case ComprasPackage.FUNC_CREATE_ACTION:
+				sequence_FuncCreateAction(context, (FuncCreateAction) semanticObject); 
+				return; 
+			case ComprasPackage.FUNC_DELETE_ACTION:
+				sequence_FuncDeleteAction(context, (FuncDeleteAction) semanticObject); 
+				return; 
+			case ComprasPackage.FUNC_EDIT_ACTION:
+				sequence_FuncEditAction(context, (FuncEditAction) semanticObject); 
+				return; 
+			case ComprasPackage.FUNC_VIEW_DROP_DOWN_ACTION:
+				sequence_FuncViewDropDownAction(context, (FuncViewDropDownAction) semanticObject); 
+				return; 
+			case ComprasPackage.FUNC_VIEW_GRID_ACTION:
+				sequence_FuncViewGridAction(context, (FuncViewGridAction) semanticObject); 
 				return; 
 			case ComprasPackage.FUNCTIONALITY:
 				sequence_Functionality(context, (Functionality) semanticObject); 
@@ -344,22 +372,49 @@ public class ComprasSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     EntityFieldLabel returns EntityFieldLabel
+	 *
+	 * Constraint:
+	 *     name=STRING
+	 */
+	protected void sequence_EntityFieldLabel(ISerializationContext context, EntityFieldLabel semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_LABEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_LABEL__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntityFieldLabelAccess().getNameSTRINGTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EntityFieldRequired returns EntityFieldRequired
+	 *
+	 * Constraint:
+	 *     name='required'
+	 */
+	protected void sequence_EntityFieldRequired(ISerializationContext context, EntityFieldRequired semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_REQUIRED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD_REQUIRED__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntityFieldRequiredAccess().getNameRequiredKeyword_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EntityField returns EntityField
 	 *
 	 * Constraint:
-	 *     (entityType=EntityType name=ID)
+	 *     (entityFieldRequired=EntityFieldRequired? entityFieldLabel=EntityFieldLabel? entityType=EntityType name=ID)
 	 */
 	protected void sequence_EntityField(ISerializationContext context, EntityField semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__ENTITY_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__ENTITY_TYPE));
-			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.ENTITY_FIELD__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEntityFieldAccess().getEntityTypeEntityTypeParserRuleCall_0_0(), semanticObject.getEntityType());
-		feeder.accept(grammarAccess.getEntityFieldAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -389,10 +444,105 @@ public class ComprasSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     FunctionalityActionType returns FuncCreateAction
+	 *     FuncCreateAction returns FuncCreateAction
+	 *
+	 * Constraint:
+	 *     name='CREATE'
+	 */
+	protected void sequence_FuncCreateAction(ISerializationContext context, FuncCreateAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncCreateActionAccess().getNameCREATEKeyword_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FunctionalityActionType returns FuncDeleteAction
+	 *     FuncDeleteAction returns FuncDeleteAction
+	 *
+	 * Constraint:
+	 *     name='DELETE'
+	 */
+	protected void sequence_FuncDeleteAction(ISerializationContext context, FuncDeleteAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncDeleteActionAccess().getNameDELETEKeyword_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FunctionalityActionType returns FuncEditAction
+	 *     FuncEditAction returns FuncEditAction
+	 *
+	 * Constraint:
+	 *     name='EDIT'
+	 */
+	protected void sequence_FuncEditAction(ISerializationContext context, FuncEditAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncEditActionAccess().getNameEDITKeyword_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FunctionalityActionType returns FuncViewDropDownAction
+	 *     FuncViewDropDownAction returns FuncViewDropDownAction
+	 *
+	 * Constraint:
+	 *     name='VIEW_DROPDOWN'
+	 */
+	protected void sequence_FuncViewDropDownAction(ISerializationContext context, FuncViewDropDownAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncViewDropDownActionAccess().getNameVIEW_DROPDOWNKeyword_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FunctionalityActionType returns FuncViewGridAction
+	 *     FuncViewGridAction returns FuncViewGridAction
+	 *
+	 * Constraint:
+	 *     name='VIEW_GRID'
+	 */
+	protected void sequence_FuncViewGridAction(ISerializationContext context, FuncViewGridAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComprasPackage.Literals.FUNCTIONALITY_ACTION_TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncViewGridActionAccess().getNameVIEW_GRIDKeyword_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Functionality returns Functionality
 	 *
 	 * Constraint:
-	 *     (name=ID entity=[Entity|FQN] functionalityFieldType+=FunctionalityFieldType*)
+	 *     (name=ID entity=[Entity|FQN] functionalityActionType+=FunctionalityActionType*)
 	 */
 	protected void sequence_Functionality(ISerializationContext context, Functionality semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

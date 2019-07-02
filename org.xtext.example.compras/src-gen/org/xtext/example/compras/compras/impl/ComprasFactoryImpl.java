@@ -29,9 +29,16 @@ import org.xtext.example.compras.compras.DbConnectorSegmentLayer;
 import org.xtext.example.compras.compras.Domain;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.EntityField;
+import org.xtext.example.compras.compras.EntityFieldLabel;
+import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
+import org.xtext.example.compras.compras.FuncCreateAction;
+import org.xtext.example.compras.compras.FuncDeleteAction;
+import org.xtext.example.compras.compras.FuncEditAction;
+import org.xtext.example.compras.compras.FuncViewDropDownAction;
+import org.xtext.example.compras.compras.FuncViewGridAction;
 import org.xtext.example.compras.compras.Functionality;
-import org.xtext.example.compras.compras.FunctionalityFieldType;
+import org.xtext.example.compras.compras.FunctionalityActionType;
 import org.xtext.example.compras.compras.ModuleTech;
 import org.xtext.example.compras.compras.PresentationLayer;
 import org.xtext.example.compras.compras.Relations;
@@ -100,8 +107,16 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
       case ComprasPackage.MODULE: return createModule();
       case ComprasPackage.ENTITY: return createEntity();
       case ComprasPackage.ENTITY_FIELD: return createEntityField();
+      case ComprasPackage.ENTITY_FIELD_LABEL: return createEntityFieldLabel();
+      case ComprasPackage.ENTITY_FIELD_REQUIRED: return createEntityFieldRequired();
       case ComprasPackage.ENTITY_TYPE: return createEntityType();
       case ComprasPackage.FUNCTIONALITY: return createFunctionality();
+      case ComprasPackage.FUNCTIONALITY_ACTION_TYPE: return createFunctionalityActionType();
+      case ComprasPackage.FUNC_CREATE_ACTION: return createFuncCreateAction();
+      case ComprasPackage.FUNC_VIEW_GRID_ACTION: return createFuncViewGridAction();
+      case ComprasPackage.FUNC_VIEW_DROP_DOWN_ACTION: return createFuncViewDropDownAction();
+      case ComprasPackage.FUNC_EDIT_ACTION: return createFuncEditAction();
+      case ComprasPackage.FUNC_DELETE_ACTION: return createFuncDeleteAction();
       case ComprasPackage.ARCHITECTURE: return createArchitecture();
       case ComprasPackage.PRESENTATION_LAYER: return createPresentationLayer();
       case ComprasPackage.CONTROLLER_SEGMENT_LAYER: return createControllerSegmentLayer();
@@ -137,8 +152,6 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
     {
       case ComprasPackage.COMMON_FIELD_TYPE:
         return createCommonFieldTypeFromString(eDataType, initialValue);
-      case ComprasPackage.FUNCTIONALITY_FIELD_TYPE:
-        return createFunctionalityFieldTypeFromString(eDataType, initialValue);
       case ComprasPackage.RELATIONS_TYPE:
         return createRelationsTypeFromString(eDataType, initialValue);
       case ComprasPackage.DATABASE_RDBMS_TYPE:
@@ -160,8 +173,6 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
     {
       case ComprasPackage.COMMON_FIELD_TYPE:
         return convertCommonFieldTypeToString(eDataType, instanceValue);
-      case ComprasPackage.FUNCTIONALITY_FIELD_TYPE:
-        return convertFunctionalityFieldTypeToString(eDataType, instanceValue);
       case ComprasPackage.RELATIONS_TYPE:
         return convertRelationsTypeToString(eDataType, instanceValue);
       case ComprasPackage.DATABASE_RDBMS_TYPE:
@@ -237,6 +248,30 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
    * @generated
    */
   @Override
+  public EntityFieldLabel createEntityFieldLabel()
+  {
+    EntityFieldLabelImpl entityFieldLabel = new EntityFieldLabelImpl();
+    return entityFieldLabel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EntityFieldRequired createEntityFieldRequired()
+  {
+    EntityFieldRequiredImpl entityFieldRequired = new EntityFieldRequiredImpl();
+    return entityFieldRequired;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EntityType createEntityType()
   {
     EntityTypeImpl entityType = new EntityTypeImpl();
@@ -253,6 +288,78 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
   {
     FunctionalityImpl functionality = new FunctionalityImpl();
     return functionality;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionalityActionType createFunctionalityActionType()
+  {
+    FunctionalityActionTypeImpl functionalityActionType = new FunctionalityActionTypeImpl();
+    return functionalityActionType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuncCreateAction createFuncCreateAction()
+  {
+    FuncCreateActionImpl funcCreateAction = new FuncCreateActionImpl();
+    return funcCreateAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuncViewGridAction createFuncViewGridAction()
+  {
+    FuncViewGridActionImpl funcViewGridAction = new FuncViewGridActionImpl();
+    return funcViewGridAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuncViewDropDownAction createFuncViewDropDownAction()
+  {
+    FuncViewDropDownActionImpl funcViewDropDownAction = new FuncViewDropDownActionImpl();
+    return funcViewDropDownAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuncEditAction createFuncEditAction()
+  {
+    FuncEditActionImpl funcEditAction = new FuncEditActionImpl();
+    return funcEditAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuncDeleteAction createFuncDeleteAction()
+  {
+    FuncDeleteActionImpl funcDeleteAction = new FuncDeleteActionImpl();
+    return funcDeleteAction;
   }
 
   /**
@@ -489,28 +596,6 @@ public class ComprasFactoryImpl extends EFactoryImpl implements ComprasFactory
    * @generated
    */
   public String convertCommonFieldTypeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FunctionalityFieldType createFunctionalityFieldTypeFromString(EDataType eDataType, String initialValue)
-  {
-    FunctionalityFieldType result = FunctionalityFieldType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertFunctionalityFieldTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

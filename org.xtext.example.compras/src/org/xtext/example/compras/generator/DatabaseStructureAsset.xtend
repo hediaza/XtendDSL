@@ -67,9 +67,12 @@ class DatabaseStructureAsset {
 			ddlDbFkSql.append(ef.compileFk)
 		}
 		
+		// Evalua si el campo puede ser nulo (determina el requerido)
+		var nullable = if (ef.entityFieldRequired === null) "" else "NOT NULL" 
+		
 		return
 		'''
-		«ef.name» «type»,
+		«ef.name» «type» «nullable»,
 		''' 
 	}
 	
