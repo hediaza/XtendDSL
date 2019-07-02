@@ -182,7 +182,7 @@ class BusinessLayerAsset {
 		return output 
 	}
 	
-		def compileViewGrid(Functionality functionality, CrudType crudType) {
+	def compileViewGrid(Functionality functionality, CrudType crudType) {
 		var CharSequence output
 		var entity = functionality.entity
 		
@@ -194,10 +194,10 @@ class BusinessLayerAsset {
 			
 			case CrudType.IMPLEMENTATION : {		
 				output = '''
-				public Result<IEnumerable<<«entity.dtoGridName»>> ListarGrid()
+				public Result<IEnumerable<«entity.dtoGridName»>> ListarGrid()
 				{
 				    // Inicializaciones
-				    var result = new Result<IEnumerable<<«entity.dtoGridName»>>();
+				    var result = new Result<IEnumerable<«entity.dtoGridName»>>();
 				
 				    // Acceso al repositorio
 				    try
@@ -406,17 +406,17 @@ class BusinessLayerAsset {
 	 * Limpia las variables que contendran los scripts por endidad
 	 */
 	def cleanCRUDScripts() {
-		//createInterfaceScript = ''''''
+		createInterfaceScript = ''''''
 		createImplementationScript = ''''''
-		//viewGridInterfaceScript = ''''''
+		viewGridInterfaceScript = ''''''
 		viewGridImplementationScript = ''''''
 		viewDropDownInterfaceScript = ''''''
-		//viewDropDownImplementationScript = ''''''
+		viewDropDownImplementationScript = ''''''
 		getImplementationScript = ''''''
-		//getInterfaceScript = ''''''
-		//editInterfaceScript = ''''''
+		getInterfaceScript = ''''''
+		editInterfaceScript = ''''''
 		editImplementationScript = ''''''
-		//deleteInterfaceScript = ''''''
+		deleteInterfaceScript = ''''''
 		deleteImplementationScript = ''''''
 	}
 }
