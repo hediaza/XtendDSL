@@ -2,6 +2,7 @@ package org.xtext.example.compras.generator
 
 import org.xtext.example.compras.compras.Entity
 import org.xtext.example.compras.compras.Module
+import org.xtext.example.compras.compras.Functionality
 import com.google.common.base.CaseFormat
 
 class CustomExtentions {
@@ -49,4 +50,12 @@ class CustomExtentions {
 	def static IRepositoryName(Entity e) { 
 		"I" + e.name + "Repository"
 	}
+	
+	/**
+	 * Retorna el nombre de la entidad con la sigla BL en formato CamelCase
+	 */
+	 def static blName(Functionality e) {
+		e.entity.name + "BL" 
+	}
+	 
 }
