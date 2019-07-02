@@ -32,14 +32,15 @@ public class ComprasParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ComprasGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getEntityTypeAccess().getAlternatives(), "rule__EntityType__Alternatives");
+			builder.put(grammarAccess.getFunctionalityActionTypeAccess().getAlternatives(), "rule__FunctionalityActionType__Alternatives");
 			builder.put(grammarAccess.getCommonFieldTypeAccess().getAlternatives(), "rule__CommonFieldType__Alternatives");
-			builder.put(grammarAccess.getFunctionalityFieldTypeAccess().getAlternatives(), "rule__FunctionalityFieldType__Alternatives");
 			builder.put(grammarAccess.getDatabaseRDBMSTypeAccess().getAlternatives(), "rule__DatabaseRDBMSType__Alternatives");
 			builder.put(grammarAccess.getSolutionAccess().getGroup(), "rule__Solution__Group__0");
 			builder.put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 			builder.put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 			builder.put(grammarAccess.getDomainAccess().getGroup(), "rule__Domain__Group__0");
 			builder.put(grammarAccess.getModuleAccess().getGroup(), "rule__Module__Group__0");
+			builder.put(grammarAccess.getModuleAccess().getGroup_10(), "rule__Module__Group_10__0");
 			builder.put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 			builder.put(grammarAccess.getEntityFieldAccess().getGroup(), "rule__EntityField__Group__0");
 			builder.put(grammarAccess.getEntityFieldLabelAccess().getGroup(), "rule__EntityFieldLabel__Group__0");
@@ -72,7 +73,7 @@ public class ComprasParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDomainAccess().getModuleAssignment_1(), "rule__Domain__ModuleAssignment_1");
 			builder.put(grammarAccess.getModuleAccess().getNameAssignment_2(), "rule__Module__NameAssignment_2");
 			builder.put(grammarAccess.getModuleAccess().getEntityAssignment_8(), "rule__Module__EntityAssignment_8");
-			builder.put(grammarAccess.getModuleAccess().getFunctionalityAssignment_13(), "rule__Module__FunctionalityAssignment_13");
+			builder.put(grammarAccess.getModuleAccess().getFunctionalityAssignment_10_3(), "rule__Module__FunctionalityAssignment_10_3");
 			builder.put(grammarAccess.getEntityAccess().getNameAssignment_0(), "rule__Entity__NameAssignment_0");
 			builder.put(grammarAccess.getEntityAccess().getEntityFieldAssignment_3(), "rule__Entity__EntityFieldAssignment_3");
 			builder.put(grammarAccess.getEntityFieldAccess().getEntityFieldRequiredAssignment_0(), "rule__EntityField__EntityFieldRequiredAssignment_0");
@@ -85,7 +86,12 @@ public class ComprasParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEntityTypeAccess().getCommonFieldTypeAssignment_1(), "rule__EntityType__CommonFieldTypeAssignment_1");
 			builder.put(grammarAccess.getFunctionalityAccess().getNameAssignment_0(), "rule__Functionality__NameAssignment_0");
 			builder.put(grammarAccess.getFunctionalityAccess().getEntityAssignment_2(), "rule__Functionality__EntityAssignment_2");
-			builder.put(grammarAccess.getFunctionalityAccess().getFunctionalityFieldTypeAssignment_5(), "rule__Functionality__FunctionalityFieldTypeAssignment_5");
+			builder.put(grammarAccess.getFunctionalityAccess().getFunctionalityActionTypeAssignment_5(), "rule__Functionality__FunctionalityActionTypeAssignment_5");
+			builder.put(grammarAccess.getFuncCreateActionAccess().getNameAssignment(), "rule__FuncCreateAction__NameAssignment");
+			builder.put(grammarAccess.getFuncViewGridActionAccess().getNameAssignment(), "rule__FuncViewGridAction__NameAssignment");
+			builder.put(grammarAccess.getFuncViewDropDownActionAccess().getNameAssignment(), "rule__FuncViewDropDownAction__NameAssignment");
+			builder.put(grammarAccess.getFuncEditActionAccess().getNameAssignment(), "rule__FuncEditAction__NameAssignment");
+			builder.put(grammarAccess.getFuncDeleteActionAccess().getNameAssignment(), "rule__FuncDeleteAction__NameAssignment");
 			builder.put(grammarAccess.getArchitectureAccess().getPresentationLayerAssignment_6(), "rule__Architecture__PresentationLayerAssignment_6");
 			builder.put(grammarAccess.getArchitectureAccess().getBusinessLayerAssignment_9(), "rule__Architecture__BusinessLayerAssignment_9");
 			builder.put(grammarAccess.getArchitectureAccess().getDataAccessLayerAssignment_12(), "rule__Architecture__DataAccessLayerAssignment_12");

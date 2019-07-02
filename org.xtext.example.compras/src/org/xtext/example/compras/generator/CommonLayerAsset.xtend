@@ -36,13 +36,21 @@ class CommonLayerAsset {
                    «ef.compile»
                «ENDFOR»
 			}
+			
+			public class «e.dtoGridName»
+		    {
+		       «FOR ef : e.entityField»  
+                   «ef.compileForGrid»
+               «ENDFOR»
+			}
 		}
+		
 		'''
 	}
 	
 	def compile(EntityField ef) {
 		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
-				   else ef.entityType.entity.dtoPathName
+				   else "int"
 		
 		var required = if (ef.entityFieldRequired === null) "" else "[Required]" 		
 		
@@ -51,6 +59,20 @@ class CommonLayerAsset {
 		return
 		'''
 		«required»
+		«label»
+		public «type» «ef.name» { get; set; }
+		
+		''' 
+	}
+	
+	def compileForGrid(EntityField ef) {
+		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
+				   else "string"
+				
+		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
+		
+		return
+		'''
 		«label»
 		public «type» «ef.name» { get; set; }
 		

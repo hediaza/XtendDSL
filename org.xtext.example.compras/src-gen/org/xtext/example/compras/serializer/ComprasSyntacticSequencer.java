@@ -22,6 +22,7 @@ import org.xtext.example.compras.services.ComprasGrammarAccess;
 public class ComprasSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ComprasGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Module___FunctionalitiesKeyword_10_0_ColonKeyword_10_1_LeftCurlyBracketKeyword_10_2_RightCurlyBracketKeyword_10_4__q;
 	protected AbstractElementAlias match_Technology___AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q;
 	protected AbstractElementAlias match_Technology___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q;
 	protected AbstractElementAlias match_Technology_____AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4_____or___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4____q;
@@ -29,6 +30,7 @@ public class ComprasSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ComprasGrammarAccess) access;
+		match_Module___FunctionalitiesKeyword_10_0_ColonKeyword_10_1_LeftCurlyBracketKeyword_10_2_RightCurlyBracketKeyword_10_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getModuleAccess().getFunctionalitiesKeyword_10_0()), new TokenAlias(false, false, grammarAccess.getModuleAccess().getColonKeyword_10_1()), new TokenAlias(false, false, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_10_2()), new TokenAlias(false, false, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_10_4()));
 		match_Technology___AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getAspNetKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getLeftCurlyBracketKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getRightCurlyBracketKeyword_1_4()));
 		match_Technology___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getDatabaseKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getRightCurlyBracketKeyword_2_4()));
 		match_Technology_____AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4_____or___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4____q = new AlternativeAlias(false, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getAspNetKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getLeftCurlyBracketKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getRightCurlyBracketKeyword_1_4()), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getDatabaseKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getRightCurlyBracketKeyword_2_4()))), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getDatabaseKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTechnologyAccess().getRightCurlyBracketKeyword_2_4())));
@@ -46,7 +48,9 @@ public class ComprasSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Technology___AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q.equals(syntax))
+			if (match_Module___FunctionalitiesKeyword_10_0_ColonKeyword_10_1_LeftCurlyBracketKeyword_10_2_RightCurlyBracketKeyword_10_4__q.equals(syntax))
+				emit_Module___FunctionalitiesKeyword_10_0_ColonKeyword_10_1_LeftCurlyBracketKeyword_10_2_RightCurlyBracketKeyword_10_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Technology___AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q.equals(syntax))
 				emit_Technology___AspNetKeyword_1_0_ColonKeyword_1_1_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Technology___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q.equals(syntax))
 				emit_Technology___DatabaseKeyword_2_0_ColonKeyword_2_1_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -56,6 +60,18 @@ public class ComprasSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('Functionalities' ':' '{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     entity+=Entity '}' (ambiguity) '}' (rule end)
+	 *     name=ID ':' '{' 'Entities' ':' '{' '}' (ambiguity) '}' (rule end)
+	 */
+	protected void emit_Module___FunctionalitiesKeyword_10_0_ColonKeyword_10_1_LeftCurlyBracketKeyword_10_2_RightCurlyBracketKeyword_10_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     ('AspNet' ':' '{' '}')?

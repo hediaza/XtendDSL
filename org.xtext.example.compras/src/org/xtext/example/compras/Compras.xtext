@@ -33,7 +33,7 @@ Domain:
 Module:
 	 'Module' ':' name=ID ':' '{' 
 	 	'Entities' ':' '{' entity+=Entity* '}'
-	 	'Functionalities' ':' '{' functionality+=Functionality* '}'
+	 	('Functionalities' ':' '{' functionality+=Functionality* '}')?
 	 '}' 
 ;
 
@@ -65,22 +65,43 @@ enum CommonFieldType:
 	STRING='string' | 
 	INT='int' | 
 	BOOL='bool' | 
-	FLOAT='float' 
+	FLOAT='float' |
+	DATE='datetime' 
 ;
 
 
 Functionality:
 	name=ID 'RelEntity' entity=[Entity|FQN] ':' '{' 
-		functionalityFieldType += FunctionalityFieldType* 
+		functionalityActionType += FunctionalityActionType* 
 	'}'
 ;
 
-enum FunctionalityFieldType:
-	CREATE='CREATE' | 
-	VIEW_GRID='VIEW_GRID' | 
-	VIEW_DROPDOWN='VIEW_DROPDOWN' | 
-	EDIT='EDIT' | 
-	DELETE='DELETE' 
+FunctionalityActionType:
+	FuncCreateAction | 
+	FuncViewGridAction | 
+	FuncViewDropDownAction | 
+	FuncEditAction | 
+	FuncDeleteAction 
+;
+
+FuncCreateAction:
+	name="CREATE"
+;
+
+FuncViewGridAction:
+	name="VIEW_GRID"
+;
+
+FuncViewDropDownAction:
+	name="VIEW_DROPDOWN"
+;
+
+FuncEditAction:
+	name="EDIT"
+;
+
+FuncDeleteAction:
+	name="DELETE"
 ;
 
 /* ----------------------------------

@@ -6,6 +6,7 @@ package org.xtext.example.compras.compras.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,12 +16,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.compras.compras.ComprasPackage;
 import org.xtext.example.compras.compras.Entity;
 import org.xtext.example.compras.compras.Functionality;
-import org.xtext.example.compras.compras.FunctionalityFieldType;
+import org.xtext.example.compras.compras.FunctionalityActionType;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +34,7 @@ import org.xtext.example.compras.compras.FunctionalityFieldType;
  * <ul>
  *   <li>{@link org.xtext.example.compras.compras.impl.FunctionalityImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.compras.compras.impl.FunctionalityImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.compras.compras.impl.FunctionalityImpl#getFunctionalityFieldType <em>Functionality Field Type</em>}</li>
+ *   <li>{@link org.xtext.example.compras.compras.impl.FunctionalityImpl#getFunctionalityActionType <em>Functionality Action Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,14 +72,14 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
   protected Entity entity;
 
   /**
-   * The cached value of the '{@link #getFunctionalityFieldType() <em>Functionality Field Type</em>}' attribute list.
+   * The cached value of the '{@link #getFunctionalityActionType() <em>Functionality Action Type</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunctionalityFieldType()
+   * @see #getFunctionalityActionType()
    * @generated
    * @ordered
    */
-  protected EList<FunctionalityFieldType> functionalityFieldType;
+  protected EList<FunctionalityActionType> functionalityActionType;
 
   /**
    * <!-- begin-user-doc -->
@@ -176,13 +178,29 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
    * @generated
    */
   @Override
-  public EList<FunctionalityFieldType> getFunctionalityFieldType()
+  public EList<FunctionalityActionType> getFunctionalityActionType()
   {
-    if (functionalityFieldType == null)
+    if (functionalityActionType == null)
     {
-      functionalityFieldType = new EDataTypeEList<FunctionalityFieldType>(FunctionalityFieldType.class, this, ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE);
+      functionalityActionType = new EObjectContainmentEList<FunctionalityActionType>(FunctionalityActionType.class, this, ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE);
     }
-    return functionalityFieldType;
+    return functionalityActionType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE:
+        return ((InternalEList<?>)getFunctionalityActionType()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -200,8 +218,8 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
       case ComprasPackage.FUNCTIONALITY__ENTITY:
         if (resolve) return getEntity();
         return basicGetEntity();
-      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE:
-        return getFunctionalityFieldType();
+      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE:
+        return getFunctionalityActionType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -223,9 +241,9 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
       case ComprasPackage.FUNCTIONALITY__ENTITY:
         setEntity((Entity)newValue);
         return;
-      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE:
-        getFunctionalityFieldType().clear();
-        getFunctionalityFieldType().addAll((Collection<? extends FunctionalityFieldType>)newValue);
+      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE:
+        getFunctionalityActionType().clear();
+        getFunctionalityActionType().addAll((Collection<? extends FunctionalityActionType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -247,8 +265,8 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
       case ComprasPackage.FUNCTIONALITY__ENTITY:
         setEntity((Entity)null);
         return;
-      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE:
-        getFunctionalityFieldType().clear();
+      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE:
+        getFunctionalityActionType().clear();
         return;
     }
     super.eUnset(featureID);
@@ -268,8 +286,8 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ComprasPackage.FUNCTIONALITY__ENTITY:
         return entity != null;
-      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_FIELD_TYPE:
-        return functionalityFieldType != null && !functionalityFieldType.isEmpty();
+      case ComprasPackage.FUNCTIONALITY__FUNCTIONALITY_ACTION_TYPE:
+        return functionalityActionType != null && !functionalityActionType.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -287,8 +305,6 @@ public class FunctionalityImpl extends MinimalEObjectImpl.Container implements F
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", functionalityFieldType: ");
-    result.append(functionalityFieldType);
     result.append(')');
     return result.toString();
   }

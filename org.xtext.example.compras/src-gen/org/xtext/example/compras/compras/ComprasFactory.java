@@ -105,6 +105,60 @@ public interface ComprasFactory extends EFactory
   Functionality createFunctionality();
 
   /**
+   * Returns a new object of class '<em>Functionality Action Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Functionality Action Type</em>'.
+   * @generated
+   */
+  FunctionalityActionType createFunctionalityActionType();
+
+  /**
+   * Returns a new object of class '<em>Func Create Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Create Action</em>'.
+   * @generated
+   */
+  FuncCreateAction createFuncCreateAction();
+
+  /**
+   * Returns a new object of class '<em>Func View Grid Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func View Grid Action</em>'.
+   * @generated
+   */
+  FuncViewGridAction createFuncViewGridAction();
+
+  /**
+   * Returns a new object of class '<em>Func View Drop Down Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func View Drop Down Action</em>'.
+   * @generated
+   */
+  FuncViewDropDownAction createFuncViewDropDownAction();
+
+  /**
+   * Returns a new object of class '<em>Func Edit Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Edit Action</em>'.
+   * @generated
+   */
+  FuncEditAction createFuncEditAction();
+
+  /**
+   * Returns a new object of class '<em>Func Delete Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Delete Action</em>'.
+   * @generated
+   */
+  FuncDeleteAction createFuncDeleteAction();
+
+  /**
    * Returns a new object of class '<em>Architecture</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

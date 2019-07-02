@@ -51,20 +51,22 @@
     <eLiterals name="INT" value="1" literal="int"/>
     <eLiterals name="BOOL" value="2" literal="bool"/>
     <eLiterals name="FLOAT" value="3" literal="float"/>
+    <eLiterals name="DATE" value="4" literal="datetime"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Functionality">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionalityFieldType"
-        unique="false" upperBound="-1" eType="#//FunctionalityFieldType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalityActionType"
+        upperBound="-1" eType="#//FunctionalityActionType" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="FunctionalityFieldType">
-    <eLiterals name="CREATE" literal="CREATE"/>
-    <eLiterals name="VIEW_GRID" value="1" literal="VIEW_GRID"/>
-    <eLiterals name="VIEW_DROPDOWN" value="2" literal="VIEW_DROPDOWN"/>
-    <eLiterals name="EDIT" value="3" literal="EDIT"/>
-    <eLiterals name="DELETE" value="4" literal="DELETE"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalityActionType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncCreateAction" eSuperTypes="#//FunctionalityActionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncViewGridAction" eSuperTypes="#//FunctionalityActionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncViewDropDownAction" eSuperTypes="#//FunctionalityActionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncEditAction" eSuperTypes="#//FunctionalityActionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncDeleteAction" eSuperTypes="#//FunctionalityActionType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Architecture">
     <eStructuralFeatures xsi:type="ecore:EReference" name="presentationLayer" eType="#//PresentationLayer"
         containment="true"/>

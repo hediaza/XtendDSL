@@ -25,7 +25,13 @@ import org.xtext.example.compras.compras.EntityField;
 import org.xtext.example.compras.compras.EntityFieldLabel;
 import org.xtext.example.compras.compras.EntityFieldRequired;
 import org.xtext.example.compras.compras.EntityType;
+import org.xtext.example.compras.compras.FuncCreateAction;
+import org.xtext.example.compras.compras.FuncDeleteAction;
+import org.xtext.example.compras.compras.FuncEditAction;
+import org.xtext.example.compras.compras.FuncViewDropDownAction;
+import org.xtext.example.compras.compras.FuncViewGridAction;
 import org.xtext.example.compras.compras.Functionality;
+import org.xtext.example.compras.compras.FunctionalityActionType;
 import org.xtext.example.compras.compras.ModuleTech;
 import org.xtext.example.compras.compras.PresentationLayer;
 import org.xtext.example.compras.compras.Relations;
@@ -159,6 +165,53 @@ public class ComprasSwitch<T> extends Switch<T>
       {
         Functionality functionality = (Functionality)theEObject;
         T result = caseFunctionality(functionality);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNCTIONALITY_ACTION_TYPE:
+      {
+        FunctionalityActionType functionalityActionType = (FunctionalityActionType)theEObject;
+        T result = caseFunctionalityActionType(functionalityActionType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNC_CREATE_ACTION:
+      {
+        FuncCreateAction funcCreateAction = (FuncCreateAction)theEObject;
+        T result = caseFuncCreateAction(funcCreateAction);
+        if (result == null) result = caseFunctionalityActionType(funcCreateAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNC_VIEW_GRID_ACTION:
+      {
+        FuncViewGridAction funcViewGridAction = (FuncViewGridAction)theEObject;
+        T result = caseFuncViewGridAction(funcViewGridAction);
+        if (result == null) result = caseFunctionalityActionType(funcViewGridAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNC_VIEW_DROP_DOWN_ACTION:
+      {
+        FuncViewDropDownAction funcViewDropDownAction = (FuncViewDropDownAction)theEObject;
+        T result = caseFuncViewDropDownAction(funcViewDropDownAction);
+        if (result == null) result = caseFunctionalityActionType(funcViewDropDownAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNC_EDIT_ACTION:
+      {
+        FuncEditAction funcEditAction = (FuncEditAction)theEObject;
+        T result = caseFuncEditAction(funcEditAction);
+        if (result == null) result = caseFunctionalityActionType(funcEditAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ComprasPackage.FUNC_DELETE_ACTION:
+      {
+        FuncDeleteAction funcDeleteAction = (FuncDeleteAction)theEObject;
+        T result = caseFuncDeleteAction(funcDeleteAction);
+        if (result == null) result = caseFunctionalityActionType(funcDeleteAction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -432,6 +485,102 @@ public class ComprasSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionality(Functionality object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Functionality Action Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Functionality Action Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionalityActionType(FunctionalityActionType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Create Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Create Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncCreateAction(FuncCreateAction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func View Grid Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func View Grid Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncViewGridAction(FuncViewGridAction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func View Drop Down Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func View Drop Down Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncViewDropDownAction(FuncViewDropDownAction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Edit Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Edit Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncEditAction(FuncEditAction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Delete Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Delete Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncDeleteAction(FuncDeleteAction object)
   {
     return null;
   }
