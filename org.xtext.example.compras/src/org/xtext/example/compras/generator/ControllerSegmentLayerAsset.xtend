@@ -35,7 +35,7 @@ class ControllerSegmentLayerAsset {
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
 		
-		// TODO: Genera los controlladores configurados en la instancia del DSL
+		// Genera los controlladores configurados en la instancia del DSL
 		for (e : resource.allContents.toIterable.filter(ControllersRef)){ 
 			var moduleName = (e.functionality.eContainer as Module).name
 			fsa.generateFile("Web/" + "Areas/" + moduleName + "/Controllers/" + e.functionality.controllerName + ".cs", compile(e.functionality, moduleName))
