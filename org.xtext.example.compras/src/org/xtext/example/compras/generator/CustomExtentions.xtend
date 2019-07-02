@@ -17,9 +17,15 @@ class CustomExtentions {
 	 * Retorna el nombre de la entidad con la sigla DTO en formato CamelCase
 	 */
 	def static dtoCamelCaseName(Entity e) { 
-		var name = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, e.name)
-		name + "DTO"
-	}	
+		e.camelCaseName + "DTO"
+	}
+	
+	/**
+	 * Retorna el nombre de la entidad en formato CamelCase
+	 */
+	def static camelCaseName(Entity e) { 
+		CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, e.name)
+	}
 	 
 	/**
 	 * Retorna la ruta de la entidad con el namespace 

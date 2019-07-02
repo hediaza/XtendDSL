@@ -47,7 +47,7 @@ class DataAccessLayerAsset {
 		var actionType = functionality.functionalityActionType
 		
 		// Limpia variables contenedonedoras de los scripts
-		cleanScripts()
+		cleanCRUDScripts()
 		
 		// Valida si cada accion esta configurada en la funcionalidad
 		// CREATE
@@ -110,7 +110,7 @@ class DataAccessLayerAsset {
 		    {
 				#region INIT
 				public «entity.repositoryName»(IDbConnector db) {
-					db = db;
+					_db = db;
 				}	
 				#endregion
 				
@@ -182,6 +182,7 @@ class DataAccessLayerAsset {
 								atom);
 					return id;
 				}	
+				
 				'''
 			}
 		} 
@@ -202,9 +203,10 @@ class DataAccessLayerAsset {
 				output = '''
 				public IEnumerable<«entity.dtoGridName»> ListarGrid() {           
 					var list = _db.GetConnection()
-								.Query<«entity.dtoGridName»>(@"«entity.sqlSelectWithInnerJoin»");
+								.Query<«entity.dtoGridName»>(@"«entity.sqlSelectForInnerJoin»");
 					return list;
-				}	
+				}
+					
 				'''
 			}
 		} 
@@ -212,13 +214,12 @@ class DataAccessLayerAsset {
 		return output 
 	}
 	
-	def sqlSelectWithInnerJoin(Entity entity) {
+	def sqlSelectForInnerJoin(Entity entity) {
 		var CharSequence output
 		
 		var firstTime = true
 		var sqlSelectContent = new StringBuffer
 		var sqlFromContent = new StringBuffer	
-		var tableNum = 1
 		
 		for (ef: entity.entityField) {
 			// Excluye el caracter coma "," en la 1ra iteracción
@@ -229,14 +230,22 @@ class DataAccessLayerAsset {
 			
 			// Generacion de SQL
 			if (ef.entityType.entity === null) {
-				sqlSelectContent.append("t" + tableNum + "." + entity.name) 
+				sqlSelectContent.append('''«entity.camelCaseName».«ef.name»
+				''') 
 			} else {
-				sqlSelectContent.append("t" + tableNum + "." + entity.name)
+				sqlSelectContent.append('''«ef.entityType.entity.camelCaseName».Nombre as «ef.name»
+				''')
+				sqlFromContent.append('''INNER JOIN dbo.«ef.entityType.entity.name» «ef.entityType.entity.camelCaseName» ON («entity.camelCaseName».«ef.name» = «ef.entityType.entity.camelCaseName».Id) 
+				''')
 			}
-			   
-			
-			
-		}		
+		}
+		
+		output = '''
+		SELECT 
+			«sqlSelectContent»
+		FROM dbo.«entity.name» «entity.camelCaseName»
+			«sqlFromContent»; 
+		'''		
 				
 		return output
 	}
@@ -259,6 +268,7 @@ class DataAccessLayerAsset {
 														   FROM dbo.«entity.name»;");
 					return list;
 				}	
+				
 				'''
 			}
 		} 
@@ -298,6 +308,7 @@ class DataAccessLayerAsset {
 												    WHERE Id = @Id;", new { Id = id });
 					return «entity.dtoCamelCaseName»;
 				}	
+				
 				'''
 			}
 		} 
@@ -337,7 +348,8 @@ class DataAccessLayerAsset {
 				                            SET «sqlSetContent»
 				                            WHERE Id = @Id;", «entity.dtoCamelCaseName», atom);
 					return id;
-				}	
+				}
+					
 				'''
 				
 			}
@@ -364,6 +376,7 @@ class DataAccessLayerAsset {
 								atom);
 					return id;
 				}	
+				
 				'''
 			}
 		} 
@@ -383,7 +396,7 @@ class DataAccessLayerAsset {
 	/**
 	 * Limpia las variables que contendran los scripts por endidad
 	 */
-	def cleanScripts() {
+	def cleanCRUDScripts() {
 		createInterfaceScript = ''''''
 		createImplementationScript = ''''''
 		viewGridInterfaceScript = ''''''
