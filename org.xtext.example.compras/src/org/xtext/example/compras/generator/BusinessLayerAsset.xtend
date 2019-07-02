@@ -14,7 +14,7 @@ class BusinessLayerAsset {
 	// CREATE
 	CharSequence createImplementationScript 
 	CharSequence createInterfaceScript
-	//READ
+	//READ 
 	CharSequence viewGridInterfaceScript
 	CharSequence getInterfaceScript
 	CharSequence viewDropDownInterfaceScript
@@ -46,6 +46,9 @@ class BusinessLayerAsset {
 		// Inicializaciones de proposito general
 		//var entity = functionality.entity
 		var actionType = functionality.functionalityActionType
+		
+		// Limpia variables contenedonedoras de los scripts
+		cleanCRUDScripts()
 	
 		// Valida si cada accion esta configurada en la funcionalidad
 		// CREATE
@@ -66,13 +69,13 @@ class BusinessLayerAsset {
 		if (isViewDropDownAction >= 1) {
 			viewDropDownInterfaceScript = compileViewDropDown(functionality, CrudType.INTERFACE)
 			viewDropDownImplementationScript = compileViewDropDown(functionality, CrudType.IMPLEMENTATION)
-			getInterfaceScript = compileGet(functionality, CrudType.INTERFACE)
-			getImplementationScript = compileGet(functionality, CrudType.IMPLEMENTATION)
 		}
 		
 		// UPDATE
 		val isEditAction = actionType.filter[it.name == "EDIT"].size		
 		if (isEditAction >= 1) {
+			getInterfaceScript = compileGet(functionality, CrudType.INTERFACE)
+			getImplementationScript = compileGet(functionality, CrudType.IMPLEMENTATION)
 			editInterfaceScript = compileEdit(functionality, CrudType.INTERFACE)
 			editImplementationScript = compileEdit(functionality, CrudType.IMPLEMENTATION)	
 		}
@@ -87,8 +90,8 @@ class BusinessLayerAsset {
 		return
 		'''
 		using Common.Utils;
-		using Models.TIENDAS;
-		using Repository.TIENDAS;
+		using Models.«moduleName»;
+		using Repository.«moduleName»;
 		using DbConnector;
 		using System;
 		using System.Collections.Generic;
@@ -105,7 +108,7 @@ class BusinessLayerAsset {
 				«deleteInterfaceScript»
 			}
 			
-			public class «functionality.blName» : BaseBL
+			public class «functionality.blName» : BaseBL, «functionality.entity.iBlName»
 			{
 				#region INIT
 				private «functionality.entity.repositoryName» _repository;

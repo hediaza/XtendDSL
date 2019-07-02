@@ -40,7 +40,7 @@ class DataAccessLayerAsset {
 
         	fsa.generateFile("Repository/" + moduleName + "/" + e.functionality.entity.repositoryName + ".cs", compile(e.functionality, moduleName))
     	}
-    	
+    	 
     	// TODO: Genera archivo del proyecto para la capa de acceso a los datos "Repository.csproj"
 	}
 	

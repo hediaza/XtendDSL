@@ -56,7 +56,7 @@ class CustomExtentions {
 	def static iRepositoryName(Entity e) { 
 		"I" + e.name + "Repository"
 	}
-	
+	 
 	/**
 	 * Retorna el nombre de la entidad con la sigla BL
 	 */

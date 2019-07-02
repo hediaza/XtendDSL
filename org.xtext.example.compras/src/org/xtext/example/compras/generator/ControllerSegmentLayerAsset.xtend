@@ -14,12 +14,11 @@ class ControllerSegmentLayerAsset {
 				   IFileSystemAccess2 fsa) {
 		
 		// TODO: Genera los controlladores configurados en la instancia del DSL
-		// Genera los archivos de logica configurados
 		for (e : resource.allContents.toIterable.filter(ControllersRef)){ 
 			var moduleName = (e.functionality.eContainer as Module).name
-			fsa.generateFile("Web/" + "Areas/" + moduleName + "/" + e.functionality.controllerName + ".cs", compile(e.functionality, moduleName))
+			fsa.generateFile("Web/" + "Areas/" + moduleName + "/Controllers/" + e.functionality.controllerName + ".cs", compile(e.functionality, moduleName))
 		}
-				   	
+				   	 
 		// TODO: Genera el archivo del proyecto para la capa de presentación "Web.csproj"
 		
 		// TODO: Genera los archivo de configuración para el modulo que representa un "Area" en el proyecto de 
