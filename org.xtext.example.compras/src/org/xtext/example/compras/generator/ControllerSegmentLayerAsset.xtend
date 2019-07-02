@@ -112,15 +112,16 @@ class ControllerSegmentLayerAsset {
 		    	#region INIT
 				private «functionality.blName» _bl;        
 				
-				public TiendaController() {
+				public «functionality.controllerName»() {
 					_db = new DapperSqlServerConnector();
 					_bl = new «functionality.blName»(_db);
 				}
 		    	#endregion
 		    	
 		    	#region CREATE
+		    		«createImplementationScript»
 				#endregion
-					«createImplementationScript»
+					
 		    	#region READ
 					«viewGridImplementationScript»
 					«viewDropDownImplementationScript»
@@ -175,7 +176,7 @@ class ControllerSegmentLayerAsset {
 		            }
 
 		            // Acceso a logicas de negocio
-		            var registrar = _bl.Registrar(tiendaDTO);
+		            var registrar = _bl.Registrar(«entity.dtoCamelCaseName»);
 		            if (!registrar.Success)
 		            {
 		                result.Message = registrar.Message;
@@ -397,11 +398,8 @@ class ControllerSegmentLayerAsset {
 		viewGridImplementationScript = ''''''
 		//viewDropDownInterfaceScript = ''''''
 		viewDropDownImplementationScript = ''''''
-		/**getImplementationScript = ''''''
-		getInterfaceScript = ''''''
-		editInterfaceScript = ''''''
+		getImplementationScript = ''''''
 		editImplementationScript = ''''''
-		deleteInterfaceScript = ''''''
-		deleteImplementationScript = ''''''*/
+		deleteImplementationScript = ''''''
 	}
 }
