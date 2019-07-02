@@ -99,7 +99,7 @@ class DataAccessLayerAsset {
 		
 		namespace Repository.«moduleName»
 		{
-		    public interface «entity.IRepositoryName»
+		    public interface «entity.iRepositoryName»
 		    {
 				«createInterfaceScript»
 				«viewGridInterfaceScript»
@@ -109,7 +109,7 @@ class DataAccessLayerAsset {
 				«deleteInterfaceScript»
 		    }
 		    
-		    public class «entity.repositoryName» : BaseRepository, «entity.IRepositoryName»
+		    public class «entity.repositoryName» : BaseRepository, «entity.iRepositoryName»
 		    {
 				#region INIT
 				public «entity.repositoryName»(IDbConnector db) {

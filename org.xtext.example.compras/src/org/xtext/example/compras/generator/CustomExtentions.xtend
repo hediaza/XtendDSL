@@ -53,19 +53,26 @@ class CustomExtentions {
 	/**
 	 * Retorna el nombre que usara para la interfase en la capa de acceso a datos
 	 */
-	def static IRepositoryName(Entity e) { 
+	def static iRepositoryName(Entity e) { 
 		"I" + e.name + "Repository"
 	}
 	
 	/**
-	 * Retorna el nombre de la entidad con la sigla BL en formato CamelCase
+	 * Retorna el nombre de la entidad con la sigla BL
 	 */
 	 def static blName(Functionality e) {
 		e.entity.name + "BL" 
 	}
 	
+	/**
+	 * Retorna el nombre de la entidad con la sigla para la interface, en la capa de negocio
+	 */
+	 def static iBlName(Entity e) {
+		"I" + e.name + "BL"
+	 }
+	
 	 /**
-	 * Retorna el nombre de la entidad con la sigla BL en formato CamelCase
+	 * Retorna el nombre de la entidad con la sigla Controller
 	 */
 	 def static controllerName(Functionality e) {
 		e.entity.name + "Controller" 

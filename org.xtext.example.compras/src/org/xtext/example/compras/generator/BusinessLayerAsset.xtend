@@ -95,7 +95,7 @@ class BusinessLayerAsset {
 		
 		namespace BusinessLogic.«moduleName»
 		{
-			public interface «functionality.entity.IRepositoryName»
+			public interface «functionality.entity.iBlName»
 			{
 				«createInterfaceScript»
 				«viewGridInterfaceScript»
@@ -339,7 +339,7 @@ class BusinessLayerAsset {
 				
 				            // Salida satisfcatoria
 				            result.Success = true;
-				            result.Message = "La tienda se actualizó satisfactoriamente.";
+				            result.Message = "El registro se actualizó satisfactoriamente.";
 				            return result;
 				        }
 					
@@ -382,7 +382,7 @@ class BusinessLayerAsset {
 				
 				            // Salida satisfcatoria
 				            result.Success = true;
-				            result.Message = "La tienda se eliminó satisfactoriamente.";
+				            result.Message = "El registro se eliminó satisfactoriamente.";
 				            return result;
 				        }	
 				
