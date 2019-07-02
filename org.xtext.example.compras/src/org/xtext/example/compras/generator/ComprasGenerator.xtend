@@ -16,7 +16,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class ComprasGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-
+ 
 		// Generación de la estructura de la base de datos SQL
 		var databaseStructureAsset = new DatabaseStructureAsset
 		databaseStructureAsset.doGenerate(resource, fsa)
@@ -25,29 +25,36 @@ class ComprasGenerator extends AbstractGenerator {
 		var commonLayerAsset = new CommonLayerAsset
 		commonLayerAsset.doGenerate(resource, fsa)
 		  
-		// TODO: Generación de activos necesarios "Repositories" 
+		// Generación de activos necesarios "Repositories" 
 		// para la capa de acceso a datos "DataAccess 
 		var dataAccessLayerAsset = new DataAccessLayerAsset
 		dataAccessLayerAsset.doGenerate(resource, fsa)
 		
-		// TODO: Generación de activos necesarios "BusinessLogic" 
+		// Generación de activos necesarios para establecer la conexión
+		// con base de datos determiando por el segmento de capa "DbConnector"
+		var dbConnectorSegmentLayerAsset = new DbConnectorSegmentLayerAsset
+		dbConnectorSegmentLayerAsset.doGenerate(resource, fsa)
+		
+		// Generación de activos necesarios "BusinessLogic" 
 		// para la capa de logica de negocio "BusinessLayer"
 		var businessLayerAsset = new BusinessLayerAsset
 		businessLayerAsset.doGenerate(resource, fsa)
 		
-		// TODO: Generación de activos necesarios "Controllers" para la capa de presentación
+		// Generación de activos necesarios "Controllers" para la capa de presentación
 		var controllerSegmentLayerAsset = new ControllerSegmentLayerAsset
 		controllerSegmentLayerAsset.doGenerate(resource, fsa)
 		
-		// TODO: Generación de activos necesarios "Views" para la capa de presentación
+		// Generación de activos necesarios "Views" para la capa de presentación
 		var viewSegmentLayerAsset = new ViewSegmentLayerAsset
 		viewSegmentLayerAsset.doGenerate(resource, fsa)
 		
-		// TODO: Generación de activos necesarios "Scrips" para la capa de presentación
+		// Generación de activos necesarios "Scrips" para la capa de presentación
 		var scriptSegmentLayerAsset = new ScriptSegmentLayerAsset
 		scriptSegmentLayerAsset.doGenerate(resource, fsa)
-		
-		
-
+				
+		// Generación de activos generales de la solución tecnologica que no pertenecen 
+		// alguna capa especifica
+		var generalAsset = new GeneralAsset
+		generalAsset.doGenerate(resource, fsa)
 	}
 }

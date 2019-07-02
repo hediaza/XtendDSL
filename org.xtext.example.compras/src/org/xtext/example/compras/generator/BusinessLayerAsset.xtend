@@ -18,10 +18,15 @@ class BusinessLayerAsset {
 	
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
+
+		// Genera los archivos de logica configurados
 		for (e : resource.allContents.toIterable.filter(BusinessLayerRef)){ 
 			var moduleName = (e.functionality.eContainer as Module).name
 			fsa.generateFile("BusinessLogic/" + moduleName + "/" + e.functionality.blName + ".cs", compile(e.functionality, moduleName))
 		}
+		
+		//TODO: Genera archivo del proyecto para la logica de negocio "BusinessLogic.csproj"
+		
 	}
 	
 	def compile (Functionality functionality, String moduleName){

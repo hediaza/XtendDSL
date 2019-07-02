@@ -34,11 +34,14 @@ class DataAccessLayerAsset {
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
 				   	
+		// Genera los archivos del repositorio configurados en la instancia del DSL	   	
 		for (e : resource.allContents.toIterable.filter(DataAccessLayerRef)) {
     		var moduleName = (e.functionality.entity.eContainer as Module).name
 
         	fsa.generateFile("Repository/" + moduleName + "/" + e.functionality.entity.repositoryName + ".cs", compile(e.functionality, moduleName))
     	}
+    	
+    	// TODO: Genera archivo del proyecto para la capa de acceso a los datos "Repository.csproj"
 	}
 	
 	def compile(Functionality functionality, String moduleName) {

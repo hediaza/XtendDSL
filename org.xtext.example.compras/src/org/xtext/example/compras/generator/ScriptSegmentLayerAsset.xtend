@@ -7,6 +7,6 @@ class ScriptSegmentLayerAsset {
 	
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
-		
+		// TODO: Genera los scripts javascript configurados en la instancia del DSL
 	}
 }
