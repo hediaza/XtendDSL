@@ -37,11 +37,8 @@ class BusinessLayerAsset {
 			fsa.generateFile("BusinessLogic/" + moduleName + "/" + e.functionality.blName + ".cs", compile(e.functionality, moduleName))
 		}
 		
-		//TODO: Genera archivo del proyecto para la logica de negocio "BusinessLogic.csproj"
-		for (e : resource.allContents.toIterable.filter(BusinessLayerRef)){ 
-			var moduleName = (e.functionality.eContainer as Module).name
-			fsa.generateFile("BusinessLogic/" + "BusinessLogic.csproj", compileProj(e.functionality, moduleName))
-		}
+		// Genera archivo del proyecto para la logica de negocio "BusinessLogic.csproj"
+		fsa.generateFile("BusinessLogic/BusinessLogic.csproj", compileCsproj())
 		
 	}
 	
@@ -147,8 +144,8 @@ class BusinessLayerAsset {
 		'''
 	}
 	
-	def compileProj(Functionality functionality, String moduleName){		
-		return
+	def compileCsproj() {
+		return 		
 		'''
 		<?xml version="1.0" encoding="utf-8"?>
 		<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -241,9 +238,15 @@ class BusinessLayerAsset {
 		    <Reference Include="System.Net.Http" />
 		    <Reference Include="System.Xml" />
 		  </ItemGroup>
+		  
+		  <!-- Inicio modificación realizada por el DSL-->
+		    
 		  <ItemGroup>
-		  	<Compile Incluide="**\*.cs" Exclude="obj\**;bin\**"/>
+		    <Compile Include="**\*.cs" Exclude="obj\**;bin\**"/>
 		  </ItemGroup>
+			
+		  <!-- Inicio modificación realizada por el DSL-->
+
 		  <ItemGroup>
 		    <ProjectReference Include="..\DbConector\DbConector.csproj">
 		      <Project>{84495211-7827-445b-8fec-dd2581c075e2}</Project>
