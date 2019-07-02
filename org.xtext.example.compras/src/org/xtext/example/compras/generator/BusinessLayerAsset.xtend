@@ -13,10 +13,15 @@ class BusinessLayerAsset {
 	// Inicializa atributos para cada acción del CRUD que contendra los scripts en C#
 	// CREATE
 	CharSequence createImplementationScript 
+	CharSequence createInterfaceScript
 	//READ
 	CharSequence viewGridImplementationScript
 	CharSequence viewDropDownInterfaceScript
 	CharSequence getImplementationScript
+	//UPDATE
+	CharSequence editImplementationScript
+	//
+	CharSequence deleteImplementationScript
 	
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
@@ -36,7 +41,7 @@ class BusinessLayerAsset {
 		// CREATE
 		val isCreateAction = actionType.filter[it.name == "CREATE"].size		
 		if (isCreateAction >= 1) {
-		//	createInterfaceScript = compileCreate(entity, CrudType.INTERFACE)
+			createInterfaceScript = compileCreate(functionality, CrudType.INTERFACE)
 			createImplementationScript = compileCreate(functionality, CrudType.IMPLEMENTATION)	
 		}
 		
@@ -53,8 +58,19 @@ class BusinessLayerAsset {
 			//viewDropDownImplementationScript = compileViewDropDown(entity, CrudType.IMPLEMENTATION)	
 		}
 		
+		// UPDATE
+		val isEditAction = actionType.filter[it.name == "EDIT"].size		
+		if (isEditAction >= 1) {
+			//getInterfaceScript = compileGet(entity, CrudType.INTERFACE)
+			editImplementationScript = compileEdit(functionality, CrudType.IMPLEMENTATION)	
+		}
 		
 		
+		val isDeleteAction = actionType.filter[it.name == "DELETE"].size		
+		if (isDeleteAction >= 1) {
+			//deleteInterfaceScript = compileDelete(entity, CrudType.INTERFACE)
+			deleteImplementationScript = compileDelete(functionality, CrudType.IMPLEMENTATION)	
+		} 
 		
 		return
 		'''
@@ -67,6 +83,15 @@ class BusinessLayerAsset {
 		
 		namespace BusinessLogic.«moduleName»
 		{
+			public interface «functionality.entity.IRepositoryName»
+			{
+				«createInterfaceScript»
+				
+				«viewDropDownInterfaceScript»
+				
+
+			}
+			
 			public class «functionality.blName» : BaseBL
 			{
 				#region INIT
@@ -89,8 +114,12 @@ class BusinessLayerAsset {
 					«getImplementationScript»
 				#endregion
 				
-				#region DELETE
+				#region UPDATE
+					«editImplementationScript»	
+				#endregion
 				
+				#region DELETE
+					«deleteImplementationScript»
 				#endregion
 				
 			}
@@ -105,7 +134,7 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				int Registrar(«entity.dtoName» «entity.dtoCamelCaseName», IDbTransaction atom);	
+				Result<int> Registrar(«entity.dtoName» «entity.dtoCamelCaseName»);
 				'''
 			
 			case CrudType.IMPLEMENTATION : {
@@ -265,6 +294,92 @@ class BusinessLayerAsset {
 		return output 
 	}
 	
+	def compileEdit(Functionality functionality, CrudType crudType) {
+		var CharSequence output
+		var entity = functionality.entity
+
+		switch crudType {
+			case CrudType.INTERFACE : 
+				output = '''
+				void Editar(«entity.dtoName» «entity.dtoCamelCaseName», IDbTransaction atom);	
+				'''
+			
+			case CrudType.IMPLEMENTATION : {
+
+				output = '''
+				public Result Editar(«entity.dtoName» «entity.dtoCamelCaseName»)
+				        {
+				            // Inicializaciones
+				            var result = new Result();
+				
+				            // Editar entidad
+				            try
+				            {
+				                _repository.Editar(«entity.dtoCamelCaseName»);
+				            }
+				            catch (Exception e)
+				            {
+				                result.Exception = e;
+				                result.Message = e.Message;
+				                return result;
+				            }
+				
+				            // Salida satisfcatoria
+				            result.Success = true;
+				            result.Message = "La tienda se actualizó satisfactoriamente.";
+				            return result;
+				        }
+					
+				'''
+				
+			}
+		} 
+
+		return output 
+	}
+	
+	def compileDelete(Functionality functionality, CrudType crudType) {
+		var CharSequence output
+		//var entity = functionality.entity
+		
+		switch crudType {
+			case CrudType.INTERFACE : 
+				output = '''
+				void Eliminar(int id, IDbTransaction atom);	
+				'''
+			
+			case CrudType.IMPLEMENTATION : {			
+				output = '''
+				public Result Eliminar(int id)
+				        {
+				            // Inicializaciones
+				            var result = new Result();
+				
+				            // Eliminar entidad
+				            try
+				            {
+				                _repository.Eliminar(id);
+				            }
+				            catch (Exception e)
+				            {
+				                result.Exception = e;
+				                result.Message = "No fue posible eliminar el registro seleccionado.";
+				                return result;
+				            }
+				
+				            // Salida satisfcatoria
+				            result.Success = true;
+				            result.Message = "La tienda se eliminó satisfactoriamente.";
+				            return result;
+				        }	
+				
+				'''
+			}
+		} 
+
+		return output 
+	}
+	
 	/**
 	* Identificadores para la generación de los scrpts de cada uno de 
 	* las acciones CRUD usados requeridos 
@@ -272,5 +387,23 @@ class BusinessLayerAsset {
 	enum CrudType {
 		IMPLEMENTATION, 
 		INTERFACE
+	}
+	
+	/**
+	 * Limpia las variables que contendran los scripts por endidad
+	 */
+	def cleanCRUDScripts() {
+		//createInterfaceScript = ''''''
+		createImplementationScript = ''''''
+		//viewGridInterfaceScript = ''''''
+		viewGridImplementationScript = ''''''
+		viewDropDownInterfaceScript = ''''''
+		//viewDropDownImplementationScript = ''''''
+		getImplementationScript = ''''''
+		//getInterfaceScript = ''''''
+		//editInterfaceScript = ''''''
+		editImplementationScript = ''''''
+		//deleteInterfaceScript = ''''''
+		deleteImplementationScript = ''''''
 	}
 }
