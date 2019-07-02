@@ -63,5 +63,12 @@ class CustomExtentions {
 	 def static blName(Functionality e) {
 		e.entity.name + "BL" 
 	}
+	
+	 /**
+	 * Retorna el nombre de la entidad con la sigla BL en formato CamelCase
+	 */
+	 def static controllerName(Functionality e) {
+		e.entity.name + "Controller" 
+	}
 	 
 }
