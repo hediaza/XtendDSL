@@ -24,7 +24,7 @@ class BusinessLayerAsset {
 	//UPDATE
 	CharSequence editInterfaceScript
 	CharSequence editImplementationScript
-	//
+	//DELETE
 	CharSequence deleteInterfaceScript
 	CharSequence deleteImplementationScript
 	
@@ -80,7 +80,7 @@ class BusinessLayerAsset {
 			editImplementationScript = compileEdit(functionality, CrudType.IMPLEMENTATION)	
 		}
 		
-		
+		// DELETE
 		val isDeleteAction = actionType.filter[it.name == "DELETE"].size		
 		if (isDeleteAction >= 1) {
 			deleteInterfaceScript = compileDelete(functionality, CrudType.INTERFACE)
