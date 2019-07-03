@@ -50,6 +50,37 @@ class CommonLayerAsset {
 		'''
 	}
 	
+	def compile(EntityField ef) {
+		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
+				   else "int"
+		
+		var required = if (ef.entityFieldRequired === null) "" else "[Required]" 		
+		
+		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
+		
+		return
+		'''
+		«required»
+		«label»
+		public «type» «ef.name» { get; set; }
+		
+		''' 
+	}
+	
+	def compileForGrid(EntityField ef) {
+		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
+				   else "string"
+				
+		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
+		
+		return
+		'''
+		«label»
+		public «type» «ef.name» { get; set; }
+		
+		''' 
+	}
+	
 	def compileCsproj() {
 		return 		
 		'''
@@ -168,36 +199,5 @@ class CommonLayerAsset {
 		  -->
 		</Project>
 		'''
-	}
-	
-	def compile(EntityField ef) {
-		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
-				   else "int"
-		
-		var required = if (ef.entityFieldRequired === null) "" else "[Required]" 		
-		
-		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
-		
-		return
-		'''
-		«required»
-		«label»
-		public «type» «ef.name» { get; set; }
-		
-		''' 
-	}
-	
-	def compileForGrid(EntityField ef) {
-		var type = if (ef.entityType.entity === null) ef.entityType.commonFieldType.toString 
-				   else "string"
-				
-		var label = if (ef.entityFieldLabel === null) "" else '''[Display(Name ="«ef.entityFieldLabel.name»")]'''
-		
-		return
-		'''
-		«label»
-		public «type» «ef.name» { get; set; }
-		
-		''' 
 	}
 }
