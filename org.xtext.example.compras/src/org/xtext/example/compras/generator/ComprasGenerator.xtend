@@ -29,11 +29,11 @@ class ComprasGenerator extends AbstractGenerator {
 		// para la capa de acceso a datos "DataAccess 
 		var dataAccessLayerAsset = new DataAccessLayerAsset
 		dataAccessLayerAsset.doGenerate(resource, fsa)
-		
+		 
 		// Generación de activos necesarios para establecer la conexión
 		// con base de datos determiando por el segmento de capa "DbConnector"
 		var dbConnectorSegmentLayerAsset = new DbConnectorSegmentLayerAsset
-		dbConnectorSegmentLayerAsset.doGenerate(resource, fsa)
+		dbConnectorSegmentLayerAsset.doGenerate(resource, fsa) 
 		
 		// Generación de activos necesarios "BusinessLogic" 
 		// para la capa de logica de negocio "BusinessLayer"
@@ -45,11 +45,11 @@ class ComprasGenerator extends AbstractGenerator {
 		controllerSegmentLayerAsset.doGenerate(resource, fsa)
 		
 		// Generación de activos necesarios "Views" para la capa de presentación
-		var viewSegmentLayerAsset = new ViewSegmentLayerAsset
+		var viewSegmentLayerAsset = new ViewSegmentLayerAsset2
 		viewSegmentLayerAsset.doGenerate(resource, fsa)
 		
 		// Generación de activos necesarios "Scrips" para la capa de presentación
-		var scriptSegmentLayerAsset = new ScriptSegmentLayerAsset
+		var scriptSegmentLayerAsset = new ScriptSegmentLayerAsset2
 		scriptSegmentLayerAsset.doGenerate(resource, fsa)
 				
 		// Generación de activos generales de la solución tecnologica que no pertenecen 

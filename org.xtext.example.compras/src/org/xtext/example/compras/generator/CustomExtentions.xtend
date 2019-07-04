@@ -76,6 +76,13 @@ class CustomExtentions {
 	 */
 	 def static controllerName(Functionality e) {
 		e.entity.name + "Controller" 
+	 }
+	 
+	 /**
+	 * Retorna el nombre del modulo en formato PascalCase
+	 */
+	def static pascalCaseName(Module m) { 
+		CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, m.name)
 	}
 	 
 }
