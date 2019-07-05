@@ -33,7 +33,7 @@ class GeneralAsset {
 				if (isViewGridAction >= 1) {
 					var funcTemplate = '''
 					<li class="@Html.IsSelected(action: "Index", controller:"«f.entity.name»")">
-					    <a href="@Url.Action("Index", "«f.entity.name»", new { area = "«m.name»"})">«f.entity.name»s</a>
+					    <a href="@Url.Action("Index", "«f.entity.name»", new { area = "«m.name»"})">«f.entity.name»</a>
 					</li>
 					'''					
 					functTemplates.append(funcTemplate)
@@ -45,7 +45,7 @@ class GeneralAsset {
 			if (atLeastOneByModule) {
 				var moduleTemplate = '''
 				<li class="">
-					<a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Modulo de «m.pascalCaseName»s</span> <span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Modulo de «m.pascalCaseName»</span> <span class="fa arrow"></span></a>
 				    <ul class="nav nav-second-level collapse ">
 				        «functTemplates»
 				    </ul>

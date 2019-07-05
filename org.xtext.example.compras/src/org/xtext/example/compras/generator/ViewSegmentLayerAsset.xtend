@@ -271,7 +271,7 @@ class ViewSegmentLayerAsset {
 		'''
 		@Html.LabelFor(m => m.«ef.name»)
 		@(Html.Kendo().NumericTextBoxFor(m => m.«ef.name»)
-		              .Format("c").Min(0).HtmlAttributes(new { @class = "", @style = "width: 100%;" }))
+		              .Min(0).HtmlAttributes(new { @class = "", @style = "width: 100%;" }))
 		«IF ef.entityFieldRequired !== null »
 		@Html.ValidationMessageFor(m => m.«ef.name»)
 		«ENDIF»
@@ -315,7 +315,7 @@ class ViewSegmentLayerAsset {
 						.Name("grid")
 						.Columns(columns =>
 						{
-							columns.Bound(p => p.Id).Width(80).Filterable(f => f.Enabled(false));
+							columns.Bound(p => p.Id).Width(40).Filterable(false);
 							«FOR ef : entity.entityField»  
 								«IF ef.name != "Id"»
 								columns.Bound(p => p.«ef.name»);

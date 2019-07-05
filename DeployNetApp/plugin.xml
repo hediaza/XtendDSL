@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="DeployNetApp.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="DeployNetApp.commands.category"
+            name="Sample Command"
+            id="DeployNetApp.commands.sampleCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="deploynetapp.handlers.SampleHandler"
+            commandId="DeployNetApp.commands.sampleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="DeployNetApp.commands.sampleCommand"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="DeployNetApp.menus.sampleMenu"
+               label="Sample Menu"
+               mnemonic="M">
+            <command
+                  commandId="DeployNetApp.commands.sampleCommand"
+                  id="DeployNetApp.menus.sampleCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="DeployNetApp.toolbars.sampleToolbar">
+            <command
+                  id="DeployNetApp.toolbars.sampleCommand"
+                  commandId="DeployNetApp.commands.sampleCommand"
+                  icon="icons/sample.png"
+                  tooltip="Transfer to .Net Application">
+            </command>
+         </toolbar>
+      </menuContribution>
+      
+       
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        
+            <command
+                  id="DeployNetApp.toolbars.sampleCommand"
+                  commandId="DeployNetApp.commands.sampleCommand"
+                  icon="icons/sample.png"
+                  label="Transfer to .Net Application"
+                  tooltip="Transfer to .Net Application">
+            </command>
+      </menuContribution>
+      
+   </extension>
+
+</plugin>

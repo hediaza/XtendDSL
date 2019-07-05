@@ -18,6 +18,12 @@ class DatabaseStructureAsset {
 	def doGenerate(Resource resource,
 				   IFileSystemAccess2 fsa) {
 				   	
+		// Elimina los objetos de base de datos previamente 		   	
+		ddlDbSql.append('''EXEC clear_db 
+		GO
+		''')
+		
+		// Adiciona la estructura DDL para la creación de la tabla		   	
 		for (e : resource.allContents.toIterable.filter(Entity)) {
     		ddlDbSql.append(e.compile)
     	}
