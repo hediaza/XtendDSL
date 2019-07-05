@@ -93,7 +93,7 @@ class DataAccessLayerAsset {
 		'''
 		using Dapper;
 		using Models.«moduleName»;
-		using DbConnector;
+		using SqlServerDB;
 		using System.Collections.Generic;
 		using System.Data;
 		
@@ -112,7 +112,8 @@ class DataAccessLayerAsset {
 		    public class «entity.repositoryName» : BaseRepository, «entity.iRepositoryName»
 		    {
 				#region INIT
-				public «entity.repositoryName»(IDbConnector db) {
+				public «entity.repositoryName»(IDbConnector db) 
+				{
 					_db = db;
 				}	
 				#endregion
@@ -306,7 +307,7 @@ class DataAccessLayerAsset {
 				output = '''
 				public «entity.dtoName» Obtener(int id) {           
 					var «entity.dtoCamelCaseName» = _db.GetConnection()
-								.QuerySingle<int>(@"SELECT 
+								.QuerySingle<«entity.dtoName»>(@"SELECT 
 														«sqlSelectContent»
 												    FROM dbo.«entity.name»
 												    WHERE Id = @Id;", new { Id = id });
@@ -347,11 +348,10 @@ class DataAccessLayerAsset {
 			
 				output = '''
 				public void Editar(«entity.dtoName» «entity.dtoCamelCaseName», IDbTransaction atom = null) {           
-					int id = _db.GetConnection()
-								.Execute(@"UPDATE dbo.«entity.name»
-				                            SET «sqlSetContent»
-				                            WHERE Id = @Id;", «entity.dtoCamelCaseName», atom);
-					return id;
+					_db.GetConnection()
+					    .Execute(@"UPDATE dbo.«entity.name»
+					                SET «sqlSetContent»
+					                WHERE Id = @Id;", «entity.dtoCamelCaseName», atom);
 				}
 					
 				'''
@@ -374,11 +374,9 @@ class DataAccessLayerAsset {
 			case CrudType.IMPLEMENTATION : {			
 				output = '''
 				public void Eliminar(int id, IDbTransaction atom = null) {           
-					int id = _db.GetConnection()
-								.Execute(@"DELETE FROM dbo.«entity.name» WHERE Id = @Id;", 
-								new { Id = id }, 
-								atom);
-					return id;
+					_db.GetConnection()
+						.Execute(@"DELETE FROM dbo.«entity.name» 
+								   WHERE Id = @Id;", new { Id = id }, atom);
 				}	
 				
 				'''

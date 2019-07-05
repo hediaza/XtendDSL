@@ -94,7 +94,7 @@ class ControllerSegmentLayerAsset {
 		using Kendo.Mvc.Extensions;
 		using Kendo.Mvc.UI;
 		using Models.«moduleName»;
-		using DbConnector;
+		using SqlServerDB;
 		using System;
 		using System.Collections.Generic;
 		using System.Linq;
@@ -110,7 +110,8 @@ class ControllerSegmentLayerAsset {
 		    	#region INIT
 				private «functionality.blName» _bl;        
 				
-				public «functionality.controllerName»() {
+				public «functionality.controllerName»() 
+				{
 					_db = new DapperSqlServerConnector();
 					_bl = new «functionality.blName»(_db);
 				}

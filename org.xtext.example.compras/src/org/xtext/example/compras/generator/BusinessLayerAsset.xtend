@@ -93,7 +93,7 @@ class BusinessLayerAsset {
 		using Common.Utils;
 		using Models.«moduleName»;
 		using Repository.«moduleName»;
-		using DbConnector;
+		using SqlServerDB;
 		using System;
 		using System.Collections.Generic;
 		
@@ -114,7 +114,7 @@ class BusinessLayerAsset {
 				#region INIT
 				private «functionality.entity.repositoryName» _repository;
 				
-				public «functionality.blName»(IDbConnector db) {
+				public «functionality.blName»(IDbConnector db)
 				{
 					_db = db;
 					_repository = new «functionality.entity.repositoryName»(_db);
@@ -236,33 +236,33 @@ class BusinessLayerAsset {
 		switch crudType {
 			case CrudType.INTERFACE : 
 				output = '''
-				IEnumerable<«entity.dtoName»> ListarDropDown();	
+				Result<IEnumerable<«entity.dtoName»>> ListarDropDown();	
 				'''
 			
 			case CrudType.IMPLEMENTATION : {			
 				output = '''
 				public Result<IEnumerable<«entity.dtoName»>> ListarDropDown()
-				        {
-				            // Inicializaciones
-				            var result = new Result<IEnumerable<«entity.dtoName»>>();
+				{
+				    // Inicializaciones
+				    var result = new Result<IEnumerable<«entity.dtoName»>>();
 				
-				            // Acceso al repositorio
-				            try
-				            {
-				                result.Data = _repository.ListarDropDown();
-				            }
-				            catch (Exception e)
-				            {
-				                result.Exception = e;
-				                result.Message = e.Message;
-				                return result;
-				            }
+				    // Acceso al repositorio
+				    try
+				    {
+				        result.Data = _repository.ListarDropDown();
+				    }
+				    catch (Exception e)
+				    {
+				        result.Exception = e;
+				        result.Message = e.Message;
+				        return result;
+				    }
 				
-				            // Salida satisfcatoria
-				            result.Success = true;
-				            result.Message = "Transacción realizada satisfactoriamente.";
-				            return result;
-				        }	
+				    // Salida satisfcatoria
+				    result.Success = true;
+				    result.Message = "Transacción realizada satisfactoriamente.";
+				    return result;
+				}	
 				
 				'''
 			}
@@ -284,27 +284,27 @@ class BusinessLayerAsset {
 			
 				output = '''
 				public Result<«entity.dtoName»> Obtener(int id)
-				        {
-				            // Inicializaciones
-				            var result = new Result<«entity.dtoName»>();
+				{
+				    // Inicializaciones
+				    var result = new Result<«entity.dtoName»>();
 				
-				            // Acceso al repositorio
-				            try
-				            {
-				                result.Data = _repository.Obtener(id);
-				            }
-				            catch (Exception e)
-				            {
-				                result.Exception = e;
-				                result.Message = e.Message;
-				                return result;
-				            }
+				    // Acceso al repositorio
+				    try
+				    {
+				        result.Data = _repository.Obtener(id);
+				    }
+				    catch (Exception e)
+				    {
+				        result.Exception = e;
+				        result.Message = e.Message;
+				        return result;
+				    }
 				
-				            // Salida satisfcatoria
-				            result.Success = true;
-				            result.Message = "Trasacción realizada satisfactoriamente";
-				            return result;
-				        }	
+				    // Salida satisfcatoria
+				    result.Success = true;
+				    result.Message = "Trasacción realizada satisfactoriamente";
+				    return result;
+				}	
 				'''
 			}
 		} 
