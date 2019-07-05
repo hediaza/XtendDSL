@@ -224,7 +224,8 @@ class DataAccessLayerAsset {
 		
 		var firstTime = true
 		var sqlSelectContent = new StringBuffer
-		var sqlFromContent = new StringBuffer	
+		var sqlFromContent = new StringBuffer
+		var i = 1	
 		
 		for (ef: entity.entityField) {
 			// Excluye el caracter coma "," en la 1ra iteracción
@@ -238,11 +239,18 @@ class DataAccessLayerAsset {
 				sqlSelectContent.append('''«entity.camelCaseName».«ef.name»
 				''') 
 			} else {
-				sqlSelectContent.append('''«ef.entityType.entity.camelCaseName».Nombre as «ef.name»
+				sqlSelectContent.append('''
+				«ef.entityType.entity.camelCaseName»«i».Nombre as «ef.name»
 				''')
-				sqlFromContent.append('''INNER JOIN dbo.«ef.entityType.entity.name» «ef.entityType.entity.camelCaseName» ON («entity.camelCaseName».«ef.name» = «ef.entityType.entity.camelCaseName».Id) 
+				sqlFromContent.append('''
+				INNER JOIN dbo.«ef.entityType.entity.name» «ef.entityType.entity.camelCaseName»«i» 
+				ON («entity.camelCaseName».«ef.name» = «ef.entityType.entity.camelCaseName»«i».Id) 
 				''')
+				
+				i++
 			}
+			
+			
 		}
 		
 		output = '''
@@ -470,27 +478,28 @@ class DataAccessLayerAsset {
 		    <Compile Include="**\*.cs" Exclude="obj\**;bin\**"/>
 		  </ItemGroup>
 		  
+		  <ItemGroup></ItemGroup>
 		  <!-- Inicio modificación realizada por el DSL-->
 		  <ItemGroup>
-		    <ProjectReference Include="..\DbConector\DbConector.csproj">
-		      <Project>{84495211-7827-445b-8fec-dd2581c075e2}</Project>
-		      <Name>DbConector</Name>
-		    </ProjectReference>
-		    <ProjectReference Include="..\Models\Models.csproj">
-		      <Project>{be4f2820-065e-4613-a170-97d723e7db26}</Project>
-		      <Name>Models</Name>
-		    </ProjectReference>
-		    <ProjectReference Include="..\Utils\Utils.csproj">
-		      <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
-		      <Name>Utils</Name>
-		    </ProjectReference>
-		  </ItemGroup>
-		  <ItemGroup>
-		    <None Include="packages.config" />
-		  </ItemGroup>
-		  <ItemGroup />
-		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-		</Project>
+		      <ProjectReference Include="..\SqlServerDB\SqlServerDB.csproj">
+		        <Project>{84495211-7827-445b-8fec-dd2581c075e2}</Project>
+		        <Name>DbConector</Name>
+		      </ProjectReference>
+		      <ProjectReference Include="..\Models\Models.csproj">
+		        <Project>{be4f2820-065e-4613-a170-97d723e7db26}</Project>
+		        <Name>Models</Name>
+		      </ProjectReference>
+		      <ProjectReference Include="..\Utils\Utils.csproj">
+		        <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
+		        <Name>Utils</Name>
+		      </ProjectReference>
+		    </ItemGroup>
+		    <ItemGroup>
+		      <None Include="packages.config" />
+		    </ItemGroup>
+		    <ItemGroup />
+		    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  </Project>
 		'''
 		}
 	

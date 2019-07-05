@@ -529,37 +529,37 @@ class BusinessLayerAsset {
 		  <!-- Inicio modificación realizada por el DSL-->
 
 		  <ItemGroup>
-		    <ProjectReference Include="..\DbConector\DbConector.csproj">
-		      <Project>{84495211-7827-445b-8fec-dd2581c075e2}</Project>
-		      <Name>DbConector</Name>
-		    </ProjectReference>
-		    <ProjectReference Include="..\Models\Models.csproj">
-		      <Project>{be4f2820-065e-4613-a170-97d723e7db26}</Project>
-		      <Name>Models</Name>
-		    </ProjectReference>
-		    <ProjectReference Include="..\Repository\Repository.csproj">
-		      <Project>{2bbeb9c6-d2cd-47a7-b00b-4d258959b9af}</Project>
-		      <Name>Repository</Name>
-		    </ProjectReference>
-		    <ProjectReference Include="..\Utils\Utils.csproj">
-		      <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
-		      <Name>Utils</Name>
-		    </ProjectReference>
-		  </ItemGroup>
-		  <ItemGroup>
-		    <None Include="app.config" />
-		    <None Include="packages.config" />
-		  </ItemGroup>
-		  <ItemGroup />
-		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-		       Other similar extension points exist, see Microsoft.Common.targets.
-		  <Target Name="BeforeBuild">
-		  </Target>
-		  <Target Name="AfterBuild">
-		  </Target>
-		  -->
-		</Project>
+		      <ProjectReference Include="..\SqlServerDB\SqlServerDB.csproj">
+		        <Project>{84495211-7827-445b-8fec-dd2581c075e2}</Project>
+		        <Name>DbConector</Name>
+		      </ProjectReference>
+		      <ProjectReference Include="..\Models\Models.csproj">
+		        <Project>{be4f2820-065e-4613-a170-97d723e7db26}</Project>
+		        <Name>Models</Name>
+		      </ProjectReference>
+		      <ProjectReference Include="..\Repository\Repository.csproj">
+		        <Project>{2bbeb9c6-d2cd-47a7-b00b-4d258959b9af}</Project>
+		        <Name>Repository</Name>
+		      </ProjectReference>
+		      <ProjectReference Include="..\Utils\Utils.csproj">
+		        <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
+		        <Name>Utils</Name>
+		      </ProjectReference>
+		    </ItemGroup>
+		    <ItemGroup>
+		      <None Include="app.config" />
+		      <None Include="packages.config" />
+		    </ItemGroup>
+		    <ItemGroup />
+		    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		         Other similar extension points exist, see Microsoft.Common.targets.
+		    <Target Name="BeforeBuild">
+		    </Target>
+		    <Target Name="AfterBuild">
+		    </Target>
+		    -->
+		  </Project>
 		'''
 	}
 	

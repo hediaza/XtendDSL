@@ -177,27 +177,25 @@ class CommonLayerAsset {
 		  <!-- Inicio modificación realizada por el DSL-->
 		  
 		  <ItemGroup>
-		    <ProjectReference Include="..\Utils\Utils.csproj">
-		      <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
-		      <Name>Utils</Name>
-		    </ProjectReference>
-		  </ItemGroup>
-		  <ItemGroup>
-		    <None Include="app.config" />
-		    <None Include="packages.config" />
-		  </ItemGroup>
-		  <ItemGroup>
-		    <Folder Include="GLOBAL\" />
-		  </ItemGroup>
-		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-		       Other similar extension points exist, see Microsoft.Common.targets.
-		  <Target Name="BeforeBuild">
-		  </Target>
-		  <Target Name="AfterBuild">
-		  </Target>
-		  -->
-		</Project>
+		      <ProjectReference Include="..\Utils\Utils.csproj">
+		        <Project>{f22c6b9e-912e-4123-9cc5-80818f723eed}</Project>
+		        <Name>Utils</Name>
+		      </ProjectReference>
+		    </ItemGroup>
+		    <ItemGroup>
+		      <None Include="app.config" />
+		      <None Include="packages.config" />
+		    </ItemGroup>
+		    <ItemGroup />
+		    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		         Other similar extension points exist, see Microsoft.Common.targets.
+		    <Target Name="BeforeBuild">
+		    </Target>
+		    <Target Name="AfterBuild">
+		    </Target>
+		    -->
+		  </Project>
 		'''
 	}
 }
