@@ -45,11 +45,11 @@ class ComprasGenerator extends AbstractGenerator {
 		controllerSegmentLayerAsset.doGenerate(resource, fsa)
 		
 		// Generación de activos necesarios "Views" para la capa de presentación
-		var viewSegmentLayerAsset = new ViewSegmentLayerAsset2
+		var viewSegmentLayerAsset = new ViewSegmentLayerAsset
 		viewSegmentLayerAsset.doGenerate(resource, fsa)
 		
 		// Generación de activos necesarios "Scrips" para la capa de presentación
-		var scriptSegmentLayerAsset = new ScriptSegmentLayerAsset2
+		var scriptSegmentLayerAsset = new ScriptSegmentLayerAsset
 		scriptSegmentLayerAsset.doGenerate(resource, fsa)
 				
 		// Generación de activos generales de la solución tecnologica que no pertenecen 

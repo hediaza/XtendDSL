@@ -83,7 +83,7 @@ class DatabaseStructureAsset {
 		return 
 		'''
 		ALTER TABLE «entityName» 
-		ADD CONSTRAINT fk_«entityName»_«ef.entityType.entity.name» 
+		ADD CONSTRAINT fk«entityName»«ef.entityType.entity.name»«ef.name» 
 		FOREIGN KEY ( «ef.name» ) 
 		REFERENCES «ef.entityType.entity.name»( Id ) 
 		ON DELETE NO ACTION 
