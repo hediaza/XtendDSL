@@ -45,7 +45,7 @@ class GeneralAsset {
 			if (atLeastOneByModule) {
 				var moduleTemplate = '''
 				<li class="">
-					<a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Modulo de «m.pascalCaseName»</span> <span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">Modulo de «m.pascalCaseName»</span> <span class="fa arrow"></span></a>
 				    <ul class="nav nav-second-level collapse ">
 				        «functTemplates»
 				    </ul>
