@@ -113,7 +113,7 @@ class ViewSegmentLayerAsset {
 		@using Models.«moduleName»;
 		
 		@{
-		    ViewBag.Title = "Tiendas";
+		    ViewBag.Title = "«entity.pascalCaseName»";
 		    var viewName = Path.GetFileNameWithoutExtension(VirtualPath);
 		}
 		

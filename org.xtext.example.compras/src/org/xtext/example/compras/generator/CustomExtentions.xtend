@@ -27,6 +27,13 @@ class CustomExtentions {
 	def static camelCaseName(Entity e) { 
 		CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, e.name)
 	}
+	
+	/**
+	 * Retorna el nombre de la entidad en formato PascalCase
+	 */
+	def static pascalCaseName(Entity e) { 
+		CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, e.name)
+	}
 	 
 	/**
 	 * Retorna la ruta de la entidad con el namespace 
