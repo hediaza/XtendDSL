@@ -54,6 +54,7 @@ public class SampleHandler extends AbstractHandler {
 			e.printStackTrace();
 		}	
 		
+		
 		// Muestra mensaje de resultado
 		MessageDialog.openInformation(window.getShell(), "DeployNetApp", "Transferencia exitosa.\nRecuerde ejecutar los scrips SQL de la base datos previamente.");
 

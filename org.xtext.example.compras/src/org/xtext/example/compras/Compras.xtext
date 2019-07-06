@@ -191,6 +191,7 @@ Technology:
 				('DatabaseRDBMSType' ':' databaseRDBMSType=DatabaseRDBMSType)?
 				('ConnectionString' ':' connectionString=ConnectionString)?
 			'}')?
+			('DataFileSeed' ':' dataFileSeed=DataFileSeed)?
 		'}')?
 	'}'
 ;
@@ -243,6 +244,10 @@ CommonLayerRef:
 
 
 ConnectionString:
+	STRING
+;
+
+DataFileSeed:
 	STRING
 ;
 
