@@ -78,6 +78,7 @@ class DatabaseStructureAsset {
 				case "int": "int"
 				case "bool": "bit"
 				case "float": "float"	
+				case "datetime": "datetime"	
 			}
 			 
 		// En caso de ser una relación

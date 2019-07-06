@@ -243,7 +243,7 @@ class ViewSegmentLayerAsset {
 					// TODO: definir metodo para float
 				}
 				case "datetime": {
-					// TODO: definir metodo para datetime
+					output = compileDateTimeUIControl(ef)
 				}
 			} 
 		} 
@@ -272,6 +272,17 @@ class ViewSegmentLayerAsset {
 		@Html.LabelFor(m => m.«ef.name»)
 		@(Html.Kendo().NumericTextBoxFor(m => m.«ef.name»)
 		              .Min(0).HtmlAttributes(new { @class = "", @style = "width: 100%;" }))
+		«IF ef.entityFieldRequired !== null »
+		@Html.ValidationMessageFor(m => m.«ef.name»)
+		«ENDIF»
+		
+		'''
+	}
+	
+	def compileDateTimeUIControl(EntityField ef) {
+		'''
+		@Html.LabelFor(m => m.«ef.name»)
+		@(Html.Kendo().DatePickerFor(m => m.«ef.name»).HtmlAttributes(new { @class = "form-control", style = "width: 100%" }))
 		«IF ef.entityFieldRequired !== null »
 		@Html.ValidationMessageFor(m => m.«ef.name»)
 		«ENDIF»
