@@ -184,11 +184,11 @@ class ViewSegmentLayerAsset {
 		    <!-- Script de la vista modal -->
 		    <script src="@Url.Content(Utils.GetJsFilePath(VirtualPath))"></script>
 		
-		    @using (Ajax.BeginForm("Registrar", "«entity.name»", new { area = "«moduleName»" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = viewName + ".onSuccess" }))
+		    @using (Ajax.BeginForm("Editar", "«entity.name»", new { area = "«moduleName»" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = viewName + ".onSuccess" }))
 		    {
 		        <div class="modal-header">
 		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		            <h3 class="modal-title">Editar</h3>
+		            <h3 class="modal-title">Editar «entity.camelCaseName»</h3>
 		        </div>
 		
 		        <div class="modal-body">
